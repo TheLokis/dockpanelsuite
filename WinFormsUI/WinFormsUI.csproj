@@ -158,6 +158,20 @@
     </Compile>
     <Compile Include="Docking\Win32\Enums.cs" />
     <Compile Include="Docking\Win32\NativeMethods.cs" />
+    <Compile Include="ThemeVS2012Light\Resources.Designer.cs" />
+    <Compile Include="ThemeVS2012Light\Strings.Designer.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideStrip.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideWindowControl.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneCaption.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneStrip.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightDockWindow.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightSplitterControl.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightTheme.cs" />
+    <Compile Include="ThemeVS2013Blue\Resources.Designer.cs" />
+    <Compile Include="ThemeVS2013Blue\Strings.Designer.cs" />
+    <Compile Include="ThemeVS2013Blue\VS2013BlueDockPaneStrip.cs" />
+    <Compile Include="ThemeVS2013Blue\VS2013BlueSplitterControl.cs" />
+    <Compile Include="ThemeVS2013Blue\VS2013BlueTheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Docking\Resources.resx">
@@ -170,6 +184,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThemeVS2012Light\Resources.resx" />
+    <EmbeddedResource Include="ThemeVS2012Light\Strings.resx" />
+    <EmbeddedResource Include="ThemeVS2013Blue\Resources.resx" />
+    <EmbeddedResource Include="ThemeVS2013Blue\Strings.resx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Docking\DockPanel.Appearance.cs">
@@ -210,6 +228,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Docking\Resources\DockIndicator_PaneDiamond_HotspotIndex_VS2012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ThemeVS2012Light.csproj" />
+    <Content Include="ThemeVS2012Light\Resources\ActiveTabHover_Close.png" />
+    <Content Include="ThemeVS2012Light\Resources\ActiveTab_Close.png" />
+    <Content Include="ThemeVS2012Light\Resources\Dockindicator_PaneDiamond.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PaneDiamond1.bmp" />
+    <Content Include="ThemeVS2012Light\Resources\Dockindicator_PaneDiamond_Fill.png" />
+    <Content Include="ThemeVS2012Light\Resources\Dockindicator_PaneDiamond_Hotspot.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PaneDiamond_HotspotIndex.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PanelBottom.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PanelFill.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PanelLeft.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PanelRight.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockIndicator_PanelTop.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockPane_AutoHide.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockPane_Close.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockPane_Dock.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockPane_Option.png" />
+    <Content Include="ThemeVS2012Light\Resources\DockPane_OptionOverflow.png" />
+    <Content Include="ThemeVS2012Light\Resources\InactiveTabHover_Close.png" />
+    <Content Include="ThemeVS2012Light\Resources\LostFocusTabHover_Close.png" />
+    <Content Include="ThemeVS2012Light\Resources\LostFocusTab_Close.png" />
+    <Content Include="ThemeVS2013Blue.csproj" />
+    <Content Include="ThemeVS2013Blue\Resources\ActiveTabHover_Close.png" />
+    <Content Include="ThemeVS2013Blue\Resources\ActiveTab_Close.png" />
+    <Content Include="ThemeVS2013Blue\Resources\DockPane_Close.png" />
+    <Content Include="ThemeVS2013Blue\Resources\DockPane_Close_disabled.png" />
+    <Content Include="ThemeVS2013Blue\Resources\LostFocusTab_Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <UsingTask Condition=" '$(Configuration)' == 'Release' AND '$(OS)' == 'Windows_NT' AND Exists('..\gendarme\GendarmeMsBuild.dll')" AssemblyFile="..\gendarme\GendarmeMsBuild.dll" TaskName="GendarmeMsBuild.Gendarme" />

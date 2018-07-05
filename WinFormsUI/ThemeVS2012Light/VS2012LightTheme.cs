@@ -326,14 +326,14 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             private class VS2012LightPaneIndicator : PictureBox, DockPanel.IPaneIndicator
             {
-                private static Bitmap _bitmapPaneDiamond = Resources.Dockindicator_PaneDiamond;
-                private static Bitmap _bitmapPaneDiamondLeft = Resources.Dockindicator_PaneDiamond_Fill;
-                private static Bitmap _bitmapPaneDiamondRight = Resources.Dockindicator_PaneDiamond_Fill;
-                private static Bitmap _bitmapPaneDiamondTop = Resources.Dockindicator_PaneDiamond_Fill;
-                private static Bitmap _bitmapPaneDiamondBottom = Resources.Dockindicator_PaneDiamond_Fill;
-                private static Bitmap _bitmapPaneDiamondFill = Resources.Dockindicator_PaneDiamond_Fill;
-                private static Bitmap _bitmapPaneDiamondHotSpot = Resources.Dockindicator_PaneDiamond_Hotspot;
-                private static Bitmap _bitmapPaneDiamondHotSpotIndex = Resources.DockIndicator_PaneDiamond_HotspotIndex;
+                private static Bitmap _bitmapPaneDiamond = Resources.DockIndicator_PaneDiamond;
+                private static Bitmap _bitmapPaneDiamondLeft = Resources.DockIndicator_PaneDiamond_Fill;
+                private static Bitmap _bitmapPaneDiamondRight = Resources.DockIndicator_PaneDiamond_Fill;
+                private static Bitmap _bitmapPaneDiamondTop = Resources.DockIndicator_PaneDiamond_Fill;
+                private static Bitmap _bitmapPaneDiamondBottom = Resources.DockIndicator_PaneDiamond_Fill;
+                private static Bitmap _bitmapPaneDiamondFill = Resources.DockIndicator_PaneDiamond_Fill;
+                private static Bitmap _bitmapPaneDiamondHotSpot = Resources.DockIndicator_PaneDiamond_HotSpot;
+                private static Bitmap _bitmapPaneDiamondHotSpotIndex = Resources.DockIndicator_PaneDiamond_HotSpotIndex;
 
                 private static DockPanel.HotSpotIndex[] _hotSpots = new[]
                     {
