@@ -60,6 +60,9 @@ namespace WeifenLuo.WinFormsUI.Docking
                 if (window == null)
                     return;
 
+                if (!window.DockPanel.AllowChangeLayout)
+                    return;
+
                 window.DockPanel.BeginDrag(window, window.RectangleToScreen(Bounds));
             }
 

@@ -473,7 +473,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             skin.AutoHideStripSkin.DockStripGradient.StartColor = hover;
             skin.AutoHideStripSkin.DockStripGradient.EndColor = inactiveTab;
-            skin.AutoHideStripSkin.TabGradient.TextColor = Color.White;
+            skin.AutoHideStripSkin.TabGradient.TextColor = Color.Black;
             skin.AutoHideStripSkin.DockStripBackground.StartColor = border;
 
             skin.DockPaneStripSkin.DocumentGradient.DockStripGradient.StartColor = border;
@@ -529,7 +529,8 @@ namespace WeifenLuo.WinFormsUI.Docking
                 DockWindow window = Parent as DockWindow;
                 if (window == null)
                     return;
-
+                if (!window.DockPanel.AllowChangeLayout)
+                    return;
                 window.DockPanel.BeginDrag(window, window.RectangleToScreen(Bounds));
             }
 

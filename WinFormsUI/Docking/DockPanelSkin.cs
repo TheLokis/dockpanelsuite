@@ -26,7 +26,11 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public AutoHideStripSkin AutoHideStripSkin
         {
-            get { return m_autoHideStripSkin; }
+            get {
+                //m_autoHideStripSkin.TabGradient.StartColor = Color.Black;
+                //m_autoHideStripSkin.TabGradient.EndColor = Color.Black;
+                return m_autoHideStripSkin ;
+            }
             set { m_autoHideStripSkin = value; }
         }
 
@@ -79,7 +83,6 @@ namespace WeifenLuo.WinFormsUI.Docking
             set { m_DockStripBackground = value; }
         }
 
-
         /// <summary>
         /// Font used in AutoHideStrip elements.
         /// </summary>
@@ -89,6 +92,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get { return m_textFont; }
             set { m_textFont = value; }
         }
+
     }
 
     /// <summary>

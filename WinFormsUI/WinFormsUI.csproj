@@ -160,18 +160,38 @@
     <Compile Include="Docking\Win32\NativeMethods.cs" />
     <Compile Include="ThemeVS2012Light\Resources.Designer.cs" />
     <Compile Include="ThemeVS2012Light\Strings.Designer.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideStrip.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideWindowControl.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneCaption.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneStrip.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightDockWindow.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightSplitterControl.cs" />
-    <Compile Include="ThemeVS2012Light\VS2012LightTheme.cs" />
+    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightAutoHideWindowControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneCaption.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightDockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightDockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightSplitterControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2012Light\VS2012LightTheme.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ThemeVS2013Blue\Resources.Designer.cs" />
     <Compile Include="ThemeVS2013Blue\Strings.Designer.cs" />
-    <Compile Include="ThemeVS2013Blue\VS2013BlueDockPaneStrip.cs" />
-    <Compile Include="ThemeVS2013Blue\VS2013BlueSplitterControl.cs" />
-    <Compile Include="ThemeVS2013Blue\VS2013BlueTheme.cs" />
+    <Compile Include="ThemeVS2013Blue\VS2013BlueDockPaneStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013Blue\VS2013BlueSplitterControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThemeVS2013Blue\VS2013BlueTheme.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Docking\Resources.resx">

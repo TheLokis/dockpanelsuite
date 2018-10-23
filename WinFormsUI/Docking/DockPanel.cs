@@ -251,6 +251,24 @@ namespace WeifenLuo.WinFormsUI.Docking
 				m_canCloseFloatWindowInLock = value;
 			}
 		}
+        private bool m_CanSizableFloatWindowInLock = false;
+        [DefaultValue(false)]
+        public bool CanSizableFloatWindowInLock
+        {
+            get
+            {
+                return m_CanSizableFloatWindowInLock;
+            }
+            set
+            {
+                if (m_CanSizableFloatWindowInLock == value)
+                    return;
+
+                m_CanSizableFloatWindowInLock = value;
+                foreach (FloatWindow floatWindow in FloatWindows)
+                    floatWindow.CanSizableFloatWindowInLock = value;
+            }
+        }
 
         private DockContentCollection m_contents = new DockContentCollection();
         [Browsable(false)]

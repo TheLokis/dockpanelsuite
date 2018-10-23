@@ -30,7 +30,8 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             m_nestedPanes = new NestedPaneCollection(this);
 
-			AllowChangeLayout = dockPanel.AllowChangeLayout;
+            AllowChangeLayout = dockPanel.AllowChangeLayout;
+            CanSizableFloatWindowInLock = dockPanel.CanSizableFloatWindowInLock;
             ShowInTaskbar = false;
             if (dockPanel.RightToLeft != RightToLeft)
                 RightToLeft = dockPanel.RightToLeft;
@@ -91,9 +92,28 @@ namespace WeifenLuo.WinFormsUI.Docking
 					return;
 
 				m_allowChangeLayout = value;
-				FormBorderStyle = m_allowChangeLayout ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
-			}
+                FormBorderStyle = m_allowChangeLayout ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
+            }
 		}
+
+        private bool m_CanSizableFloatWindowInLock = false;
+        public bool CanSizableFloatWindowInLock
+        {
+            get
+            {
+                return m_CanSizableFloatWindowInLock;
+            }
+            set
+            {
+                if (m_CanSizableFloatWindowInLock == value)
+                    return;
+
+                m_CanSizableFloatWindowInLock = value;
+                FormBorderStyle = m_CanSizableFloatWindowInLock ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
+
+            }
+        }
+
 
         public NestedPaneCollection NestedPanes
         {
