@@ -13,7 +13,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         public VS2012LightSplitterControl(DockPane pane)
             : base(pane)
         {
-            _horizontalBrush = new SolidBrush(pane.DockPanel.Skin.DockPaneStripSkin.DocumentGradient.ActiveTabGradient.EndColor);
+            this._horizontalBrush = new SolidBrush(pane.DockPanel.Skin.DockPaneStripSkin.DocumentGradient.ActiveTabGradient.EndColor);
             this._verticalSurroundColors = new[]
                                                {
                                                    pane.DockPanel.Skin.DockPaneStripSkin.DocumentGradient
@@ -25,12 +25,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             base.OnPaint(e);
 
-            Rectangle rect = ClientRectangle;
+            Rectangle rect = this.ClientRectangle;
 
             if (rect.Width <= 0 || rect.Height <= 0)
                 return;
 
-            switch (Alignment)
+            switch (this.Alignment)
             {
                 case DockAlignment.Right:
                 case DockAlignment.Left:
@@ -52,7 +52,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                 case DockAlignment.Bottom:
                 case DockAlignment.Top:
                     {
-                        e.Graphics.FillRectangle(_horizontalBrush, rect.X, rect.Y,
+                        e.Graphics.FillRectangle(this._horizontalBrush, rect.X, rect.Y,
                                         rect.Width, Measures.SplitterSize);
                     }
                     break;

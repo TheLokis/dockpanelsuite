@@ -31,27 +31,27 @@ namespace WeifenLuo.WinFormsUI.Docking
             private Point m_startMousePosition = Point.Empty;
             protected Point StartMousePosition
             {
-                get { return m_startMousePosition; }
-                private set { m_startMousePosition = value; }
+                get { return this.m_startMousePosition; }
+                private set { this.m_startMousePosition = value; }
             }
 
             protected bool BeginDrag()
             {
-                if (DragControl == null)
+                if (this.DragControl == null)
                     return false;
 
-                StartMousePosition = Control.MousePosition;
+                this.StartMousePosition = Control.MousePosition;
 
                 if (!Win32Helper.IsRunningOnMono)
                 {
-                    if (!NativeMethods.DragDetect(DragControl.Handle, StartMousePosition))
+                    if (!NativeMethods.DragDetect(this.DragControl.Handle, this.StartMousePosition))
                     {
                         return false;
                     }
                 }
 
-                DragControl.FindForm().Capture = true;
-                AssignHandle(DragControl.FindForm().Handle);
+                this.DragControl.FindForm().Capture = true;
+                this.AssignHandle(this.DragControl.FindForm().Handle);
                 Application.AddMessageFilter(this);
                 return true;
             }
@@ -62,25 +62,25 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             private void EndDrag(bool abort)
             {
-                ReleaseHandle();
+                this.ReleaseHandle();
                 Application.RemoveMessageFilter(this);
-                DragControl.FindForm().Capture = false;
+                this.DragControl.FindForm().Capture = false;
 
-                OnEndDrag(abort);
+                this.OnEndDrag(abort);
             }
 
             bool IMessageFilter.PreFilterMessage(ref Message m)
             {
                 if (m.Msg == (int)Win32.Msgs.WM_MOUSEMOVE)
-                    OnDragging();
+                    this.OnDragging();
                 else if (m.Msg == (int)Win32.Msgs.WM_LBUTTONUP)
-                    EndDrag(false);
+                    this.EndDrag(false);
                 else if (m.Msg == (int)Win32.Msgs.WM_CAPTURECHANGED)
-                    EndDrag(true);
+                    this.EndDrag(true);
                 else if (m.Msg == (int)Win32.Msgs.WM_KEYDOWN && (int)m.WParam == (int)Keys.Escape)
-                    EndDrag(true);
+                    this.EndDrag(true);
 
-                return OnPreFilterMessage(ref m);
+                return this.OnPreFilterMessage(ref m);
             }
 
             protected virtual bool OnPreFilterMessage(ref Message m)
@@ -91,7 +91,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             protected sealed override void WndProc(ref Message m)
             {
                 if (m.Msg == (int)Win32.Msgs.WM_CANCELMODE || m.Msg == (int)Win32.Msgs.WM_CAPTURECHANGED)
-                    EndDrag(true);
+                    this.EndDrag(true);
 
                 base.WndProc(ref m);
             }
@@ -103,31 +103,31 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             protected DragHandler(DockPanel dockPanel)
             {
-                m_dockPanel = dockPanel;
+                this.m_dockPanel = dockPanel;
             }
 
             public DockPanel DockPanel
             {
-                get { return m_dockPanel; }
+                get { return this.m_dockPanel; }
             }
 
             private IDragSource m_dragSource;
             protected IDragSource DragSource
             {
-                get { return m_dragSource; }
-                set { m_dragSource = value; }
+                get { return this.m_dragSource; }
+                set { this.m_dragSource = value; }
             }
 
             protected sealed override Control DragControl
             {
-                get { return DragSource == null ? null : DragSource.DragControl; }
+                get { return this.DragSource == null ? null : this.DragSource.DragControl; }
             }
 
             protected sealed override bool OnPreFilterMessage(ref Message m)
             {
                 if ((m.Msg == (int)Win32.Msgs.WM_KEYDOWN || m.Msg == (int)Win32.Msgs.WM_KEYUP) &&
                     ((int)m.WParam == (int)Keys.ControlKey || (int)m.WParam == (int)Keys.ShiftKey))
-                    OnDragging();
+                    this.OnDragging();
 
                 return base.OnPreFilterMessage(ref m);
             }

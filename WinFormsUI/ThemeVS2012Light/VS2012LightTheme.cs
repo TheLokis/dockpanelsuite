@@ -49,56 +49,56 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 public VS2012LightDockOutline()
                 {
-                    m_dragForm = new DragForm();
-                    SetDragForm(Rectangle.Empty);
-                    DragForm.BackColor = Color.FromArgb(0xff, 91, 173, 255);
-                    DragForm.Opacity = 0.5;
+                    this.m_dragForm = new DragForm();
+                    this.SetDragForm(Rectangle.Empty);
+                    this.DragForm.BackColor = Color.FromArgb(0xff, 91, 173, 255);
+                    this.DragForm.Opacity = 0.5;
                 }
 
                 DragForm m_dragForm;
                 private DragForm DragForm
                 {
-                    get { return m_dragForm; }
+                    get { return this.m_dragForm; }
                 }
 
                 protected override void OnShow()
                 {
-                    CalculateRegion();
+                    this.CalculateRegion();
                 }
 
                 protected override void OnHide()
                 {
-					DragForm.Visible = false;
+                    this.DragForm.Visible = false;
                 }
 
                 protected override void OnClose()
                 {
-                    DragForm.Close();
+                    this.DragForm.Close();
                 }
 
                 private void CalculateRegion()
                 {
-                    if (SameAsOldValue)
+                    if (this.SameAsOldValue)
                         return;
 
-                    if (!FloatWindowBounds.IsEmpty)
-                        SetOutline(FloatWindowBounds);
-                    else if (DockTo is DockPanel)
-                        SetOutline(DockTo as DockPanel, Dock, (ContentIndex != 0));
-                    else if (DockTo is DockPane)
-                        SetOutline(DockTo as DockPane, Dock, ContentIndex);
+                    if (!this.FloatWindowBounds.IsEmpty)
+                        this.SetOutline(this.FloatWindowBounds);
+                    else if (this.DockTo is DockPanel)
+                        this.SetOutline(this.DockTo as DockPanel, this.Dock, (this.ContentIndex != 0));
+                    else if (this.DockTo is DockPane)
+                        this.SetOutline(this.DockTo as DockPane, this.Dock, this.ContentIndex);
                     else
-                        SetOutline();
+                        this.SetOutline();
                 }
 
                 private void SetOutline()
                 {
-                    SetDragForm(Rectangle.Empty);
+                    this.SetDragForm(Rectangle.Empty);
                 }
 
                 private void SetOutline(Rectangle floatWindowBounds)
                 {
-                    SetDragForm(floatWindowBounds);
+                    this.SetDragForm(floatWindowBounds);
                 }
 
                 private void SetOutline(DockPanel dockPanel, DockStyle dock, bool fullPanelEdge)
@@ -131,7 +131,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                         rect.Location = dockPanel.PointToScreen(rect.Location);
                     }
 
-                    SetDragForm(rect);
+                    this.SetDragForm(rect);
                 }
 
                 private void SetOutline(DockPane pane, DockStyle dock, int contentIndex)
@@ -149,13 +149,13 @@ namespace WeifenLuo.WinFormsUI.Docking
                             rect.Height -= rect.Height / 2;
                         rect.Location = pane.PointToScreen(rect.Location);
 
-                        SetDragForm(rect);
+                        this.SetDragForm(rect);
                     }
                     else if (contentIndex == -1)
                     {
                         Rectangle rect = pane.DisplayingRectangle;
                         rect.Location = pane.PointToScreen(rect.Location);
-                        SetDragForm(rect);
+                        this.SetDragForm(rect);
                     }
                     else
                     {
@@ -169,41 +169,41 @@ namespace WeifenLuo.WinFormsUI.Docking
                             }
 
                             Region region = new Region(path);
-                            SetDragForm(rect, region);
+                            this.SetDragForm(rect, region);
                         }
                     }
                 }
 
                 private void SetDragForm(Rectangle rect)
                 {
-				    DragForm.Show( false );
-                    DragForm.Bounds = rect;
+                    this.DragForm.Show( false );
+                    this.DragForm.Bounds = rect;
                     if (rect == Rectangle.Empty)
                     {
-                        if (DragForm.Region != null)
+                        if (this.DragForm.Region != null)
                         {
-                            DragForm.Region.Dispose();
+                            this.DragForm.Region.Dispose();
                         }
 
-                        DragForm.Region = new Region(Rectangle.Empty);
+                        this.DragForm.Region = new Region(Rectangle.Empty);
                     }
-                    else if (DragForm.Region != null)
+                    else if (this.DragForm.Region != null)
                     {
-                        DragForm.Region.Dispose();
-                        DragForm.Region = null;
+                        this.DragForm.Region.Dispose();
+                        this.DragForm.Region = null;
                     }
                 }
 
                 private void SetDragForm(Rectangle rect, Region region)
                 {
-				    DragForm.Show( false );
-                    DragForm.Bounds = rect;
-                    if (DragForm.Region != null)
+                    this.DragForm.Show( false );
+                    this.DragForm.Bounds = rect;
+                    if (this.DragForm.Region != null)
                     {
-                        DragForm.Region.Dispose();
+                        this.DragForm.Region.Dispose();
                     }
 
-                    DragForm.Region = region;
+                    this.DragForm.Region = region;
                 }
             }
         }
@@ -230,33 +230,33 @@ namespace WeifenLuo.WinFormsUI.Docking
 
                 public VS2012LightPanelIndicator(DockStyle dockStyle)
                 {
-                    m_dockStyle = dockStyle;
-                    SizeMode = PictureBoxSizeMode.AutoSize;
-                    Image = ImageInactive;
+                    this.m_dockStyle = dockStyle;
+                    this.SizeMode = PictureBoxSizeMode.AutoSize;
+                    this.Image = this.ImageInactive;
                 }
 
                 private DockStyle m_dockStyle;
 
                 private DockStyle DockStyle
                 {
-                    get { return m_dockStyle; }
+                    get { return this.m_dockStyle; }
                 }
 
                 private DockStyle m_status;
 
                 public DockStyle Status
                 {
-                    get { return m_status; }
+                    get { return this.m_status; }
                     set
                     {
-                        if (value != DockStyle && value != DockStyle.None)
+                        if (value != this.DockStyle && value != DockStyle.None)
                             throw new InvalidEnumArgumentException();
 
-                        if (m_status == value)
+                        if (this.m_status == value)
                             return;
 
-                        m_status = value;
-                        IsActivated = (m_status != DockStyle.None);
+                        this.m_status = value;
+                        this.IsActivated = (this.m_status != DockStyle.None);
                     }
                 }
 
@@ -264,15 +264,15 @@ namespace WeifenLuo.WinFormsUI.Docking
                 {
                     get
                     {
-                        if (DockStyle == DockStyle.Left)
+                        if (this.DockStyle == DockStyle.Left)
                             return _imagePanelLeft;
-                        else if (DockStyle == DockStyle.Right)
+                        else if (this.DockStyle == DockStyle.Right)
                             return _imagePanelRight;
-                        else if (DockStyle == DockStyle.Top)
+                        else if (this.DockStyle == DockStyle.Top)
                             return _imagePanelTop;
-                        else if (DockStyle == DockStyle.Bottom)
+                        else if (this.DockStyle == DockStyle.Bottom)
                             return _imagePanelBottom;
-                        else if (DockStyle == DockStyle.Fill)
+                        else if (this.DockStyle == DockStyle.Fill)
                             return _imagePanelFill;
                         else
                             return null;
@@ -283,15 +283,15 @@ namespace WeifenLuo.WinFormsUI.Docking
                 {
                     get
                     {
-                        if (DockStyle == DockStyle.Left)
+                        if (this.DockStyle == DockStyle.Left)
                             return _imagePanelLeftActive;
-                        else if (DockStyle == DockStyle.Right)
+                        else if (this.DockStyle == DockStyle.Right)
                             return _imagePanelRightActive;
-                        else if (DockStyle == DockStyle.Top)
+                        else if (this.DockStyle == DockStyle.Top)
                             return _imagePanelTopActive;
-                        else if (DockStyle == DockStyle.Bottom)
+                        else if (this.DockStyle == DockStyle.Bottom)
                             return _imagePanelBottomActive;
-                        else if (DockStyle == DockStyle.Fill)
+                        else if (this.DockStyle == DockStyle.Fill)
                             return _imagePanelFillActive;
                         else
                             return null;
@@ -302,17 +302,17 @@ namespace WeifenLuo.WinFormsUI.Docking
 
                 private bool IsActivated
                 {
-                    get { return m_isActivated; }
+                    get { return this.m_isActivated; }
                     set
                     {
-                        m_isActivated = value;
-                        Image = IsActivated ? ImageActive : ImageInactive;
+                        this.m_isActivated = value;
+                        this.Image = this.IsActivated ? this.ImageActive : this.ImageInactive;
                     }
                 }
 
                 public DockStyle HitTest(Point pt)
                 {
-                    return this.Visible && ClientRectangle.Contains(PointToClient(pt)) ? DockStyle : DockStyle.None;
+                    return this.Visible && this.ClientRectangle.Contains(this.PointToClient(pt)) ? this.DockStyle : DockStyle.None;
                 }
             }
         }
@@ -348,23 +348,23 @@ namespace WeifenLuo.WinFormsUI.Docking
 
                 public VS2012LightPaneIndicator()
                 {
-                    SizeMode = PictureBoxSizeMode.AutoSize;
-                    Image = _bitmapPaneDiamond;
-                    Region = new Region(DisplayingGraphicsPath);
+                    this.SizeMode = PictureBoxSizeMode.AutoSize;
+                    this.Image = _bitmapPaneDiamond;
+                    this.Region = new Region(this.DisplayingGraphicsPath);
                 }
 
                 public GraphicsPath DisplayingGraphicsPath
                 {
-                    get { return _displayingGraphicsPath; }
+                    get { return this._displayingGraphicsPath; }
                 }
 
                 public DockStyle HitTest(Point pt)
                 {
-                    if (!Visible)
+                    if (!this.Visible)
                         return DockStyle.None;
 
-                    pt = PointToClient(pt);
-                    if (!ClientRectangle.Contains(pt))
+                    pt = this.PointToClient(pt);
+                    if (!this.ClientRectangle.Contains(pt))
                         return DockStyle.None;
 
                     for (int i = _hotSpots.GetLowerBound(0); i <= _hotSpots.GetUpperBound(0); i++)
@@ -380,22 +380,22 @@ namespace WeifenLuo.WinFormsUI.Docking
 
                 public DockStyle Status
                 {
-                    get { return m_status; }
+                    get { return this.m_status; }
                     set
                     {
-                        m_status = value;
-                        if (m_status == DockStyle.None)
-                            Image = _bitmapPaneDiamond;
-                        else if (m_status == DockStyle.Left)
-                            Image = _bitmapPaneDiamondLeft;
-                        else if (m_status == DockStyle.Right)
-                            Image = _bitmapPaneDiamondRight;
-                        else if (m_status == DockStyle.Top)
-                            Image = _bitmapPaneDiamondTop;
-                        else if (m_status == DockStyle.Bottom)
-                            Image = _bitmapPaneDiamondBottom;
-                        else if (m_status == DockStyle.Fill)
-                            Image = _bitmapPaneDiamondFill;
+                        this.m_status = value;
+                        if (this.m_status == DockStyle.None)
+                            this.Image = _bitmapPaneDiamond;
+                        else if (this.m_status == DockStyle.Left)
+                            this.Image = _bitmapPaneDiamondLeft;
+                        else if (this.m_status == DockStyle.Right)
+                            this.Image = _bitmapPaneDiamondRight;
+                        else if (this.m_status == DockStyle.Top)
+                            this.Image = _bitmapPaneDiamondTop;
+                        else if (this.m_status == DockStyle.Bottom)
+                            this.Image = _bitmapPaneDiamondBottom;
+                        else if (this.m_status == DockStyle.Fill)
+                            this.Image = _bitmapPaneDiamondFill;
                     }
                 }
             }

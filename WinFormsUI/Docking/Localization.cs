@@ -16,17 +16,17 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             get
             {    
-                if (!m_initialized)
+                if (!this.m_initialized)
                 {
                     string key = base.Description;
-                    DescriptionValue = ResourceHelper.GetString(key);
-                    if (DescriptionValue == null)
-                        DescriptionValue = String.Empty;
+                    this.DescriptionValue = ResourceHelper.GetString(key);
+                    if (this.DescriptionValue == null)
+                        this.DescriptionValue = String.Empty;
 
-                    m_initialized = true;
+                    this.m_initialized = true;
                 }
 
-                return DescriptionValue;
+                return this.DescriptionValue;
             }
         }
     }

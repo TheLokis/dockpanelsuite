@@ -9,11 +9,11 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal DockWindowCollection(DockPanel dockPanel)
             : base(new List<DockWindow>())
         {
-            Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.Document));
-            Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockLeft));
-            Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockRight));
-            Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockTop));
-            Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockBottom));
+            this.Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.Document));
+            this.Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockLeft));
+            this.Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockRight));
+            this.Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockTop));
+            this.Items.Add(dockPanel.DockWindowFactory.CreateDockWindow(dockPanel, DockState.DockBottom));
         }
 
         public DockWindow this [DockState dockState]
@@ -21,15 +21,15 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
                 if (dockState == DockState.Document)
-                    return Items[0];
+                    return this.Items[0];
                 else if (dockState == DockState.DockLeft || dockState == DockState.DockLeftAutoHide)
-                    return Items[1];
+                    return this.Items[1];
                 else if (dockState == DockState.DockRight || dockState == DockState.DockRightAutoHide)
-                    return Items[2];
+                    return this.Items[2];
                 else if (dockState == DockState.DockTop || dockState == DockState.DockTopAutoHide)
-                    return Items[3];
+                    return this.Items[3];
                 else if (dockState == DockState.DockBottom || dockState == DockState.DockBottomAutoHide)
-                    return Items[4];
+                    return this.Items[4];
 
                 throw (new ArgumentOutOfRangeException());
             }

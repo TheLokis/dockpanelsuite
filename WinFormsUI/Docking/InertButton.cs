@@ -47,29 +47,29 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public InertButton()
         {
-            InternalConstruct(null, null);
+            this.InternalConstruct(null, null);
         }
 
         public InertButton(Image imageEnabled)
         {
-            InternalConstruct(imageEnabled, null);
+            this.InternalConstruct(imageEnabled, null);
         }
 
         public InertButton(Image imageEnabled, Image imageDisabled)
         {
-            InternalConstruct(imageEnabled, imageDisabled);
+            this.InternalConstruct(imageEnabled, imageDisabled);
         }
         
         private void InternalConstruct(Image imageEnabled, Image imageDisabled)
         {
             // Remember parameters
-            ImageEnabled = imageEnabled;
-            ImageDisabled = imageDisabled;
+            this.ImageEnabled = imageEnabled;
+            this.ImageDisabled = imageDisabled;
 
             // Prevent drawing flicker by blitting from memory in WM_PAINT
-            SetStyle(ControlStyles.ResizeRedraw, true);
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            this.SetStyle(ControlStyles.UserPaint, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
             // Prevent base class from trying to generate double click events and
             // so testing clicks against the double click time and rectangle. Getting
@@ -77,53 +77,53 @@ namespace WeifenLuo.WinFormsUI.Docking
             //SetStyle(ControlStyles.StandardDoubleClick, false);
 
             // Should not be allowed to select this control
-            SetStyle(ControlStyles.Selectable, false);
+            this.SetStyle(ControlStyles.Selectable, false);
 
-            m_timer = new Timer();
-            m_timer.Enabled = false;
-            m_timer.Tick += new EventHandler(Timer_Tick);
+            this.m_timer = new Timer();
+            this.m_timer.Enabled = false;
+            this.m_timer.Tick += new EventHandler(this.Timer_Tick);
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (components != null)
-                    components.Dispose();
+                if (this.components != null)
+                    this.components.Dispose();
             }
             base.Dispose(disposing);
         }
 
         public Color BorderColor
         {
-            get    {    return m_borderColor;    }
+            get    {    return this.m_borderColor;    }
             set
             {
-                if (m_borderColor != value)
+                if (this.m_borderColor != value)
                 {
-                    m_borderColor = value;
-                    Invalidate();
+                    this.m_borderColor = value;
+                    this.Invalidate();
                 }
             }
         }
 
         private bool ShouldSerializeBorderColor()
         {
-            return (m_borderColor != Color.Empty);
+            return (this.m_borderColor != Color.Empty);
         }
 
         public int BorderWidth
         {
-            get { return m_borderWidth; }
+            get { return this.m_borderWidth; }
 
             set
             {
                 if (value < 1)
                     value = 1;
-                if (m_borderWidth != value)
+                if (this.m_borderWidth != value)
                 {
-                    m_borderWidth = value;
-                    Invalidate();
+                    this.m_borderWidth = value;
+                    this.Invalidate();
                 }
             }
         }
@@ -132,15 +132,15 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             get
             { 
-                if (m_imageEnabled != null)
-                    return m_imageEnabled;
+                if (this.m_imageEnabled != null)
+                    return this.m_imageEnabled;
 
                 try
                 {
-                    if (ImageList == null || ImageIndexEnabled == -1)
+                    if (this.ImageList == null || this.ImageIndexEnabled == -1)
                         return null;
                     else
-                        return ImageList.Images[m_imageIndexEnabled];
+                        return this.ImageList.Images[this.m_imageIndexEnabled];
                 }
                 catch
                 {
@@ -150,32 +150,32 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             set
             {
-                if (m_imageEnabled != value)
+                if (this.m_imageEnabled != value)
                 {
-                    m_imageEnabled = value;
-                    Invalidate();
+                    this.m_imageEnabled = value;
+                    this.Invalidate();
                 }
             }
         }
 
         private bool ShouldSerializeImageEnabled()
         {
-            return (m_imageEnabled != null);
+            return (this.m_imageEnabled != null);
         }
 
         public Image ImageDisabled
         {
             get
             {
-                if (m_imageDisabled != null)
-                    return m_imageDisabled;
+                if (this.m_imageDisabled != null)
+                    return this.m_imageDisabled;
 
                 try
                 {
-                    if (ImageList == null || ImageIndexDisabled == -1)
+                    if (this.ImageList == null || this.ImageIndexDisabled == -1)
                         return null;
                     else
-                        return ImageList.Images[m_imageIndexDisabled];
+                        return this.ImageList.Images[this.m_imageIndexDisabled];
                 }
                 catch
                 {
@@ -185,136 +185,136 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             set
             {
-                if (m_imageDisabled != value)
+                if (this.m_imageDisabled != value)
                 {
-                    m_imageDisabled = value;
-                    Invalidate();
+                    this.m_imageDisabled = value;
+                    this.Invalidate();
                 }
             }
         }
 
         public int ImageIndexEnabled
         {
-            get    {    return m_imageIndexEnabled;    }
+            get    {    return this.m_imageIndexEnabled;    }
             set
             {
-                if (m_imageIndexEnabled != value)
+                if (this.m_imageIndexEnabled != value)
                 {
-                    m_imageIndexEnabled = value;
-                    Invalidate();
+                    this.m_imageIndexEnabled = value;
+                    this.Invalidate();
                 }
             }
         }
 
         public int ImageIndexDisabled
         {
-            get    {    return m_imageIndexDisabled;    }
+            get    {    return this.m_imageIndexDisabled;    }
             set
             {
-                if (m_imageIndexDisabled != value)
+                if (this.m_imageIndexDisabled != value)
                 {
-                    m_imageIndexDisabled = value;
-                    Invalidate();
+                    this.m_imageIndexDisabled = value;
+                    this.Invalidate();
                 }
             }
         }
 
         public bool IsPopup
         {
-            get { return m_isPopup; }
+            get { return this.m_isPopup; }
 
             set
             {
-                if (m_isPopup != value)
+                if (this.m_isPopup != value)
                 {
-                    m_isPopup = value;
-                    Invalidate();
+                    this.m_isPopup = value;
+                    this.Invalidate();
                 }
             }
         }
 
         public bool Monochrome
         {
-            get    {    return m_monochrom;    }
+            get    {    return this.m_monochrom;    }
             set
             {
-                if (value != m_monochrom)
+                if (value != this.m_monochrom)
                 {
-                    m_monochrom = value;
-                    Invalidate();
+                    this.m_monochrom = value;
+                    this.Invalidate();
                 }
             }
         }
 
         public bool RepeatClick
         {
-            get    {    return (ClickStatus != RepeatClickStatus.Disabled);    }
-            set    {    ClickStatus = RepeatClickStatus.Stopped;    }
+            get    {    return (this.ClickStatus != RepeatClickStatus.Disabled);    }
+            set    { this.ClickStatus = RepeatClickStatus.Stopped;    }
         }
 
         private RepeatClickStatus m_clickStatus = RepeatClickStatus.Disabled;
         private RepeatClickStatus ClickStatus
         {
-            get    {    return m_clickStatus;    }
+            get    {    return this.m_clickStatus;    }
             set
             {
-                if (m_clickStatus == value)
+                if (this.m_clickStatus == value)
                     return;
 
-                m_clickStatus = value;
-                if (ClickStatus == RepeatClickStatus.Started)
+                this.m_clickStatus = value;
+                if (this.ClickStatus == RepeatClickStatus.Started)
                 {
-                    Timer.Interval = RepeatClickDelay;
-                    Timer.Enabled = true;
+                    this.Timer.Interval = this.RepeatClickDelay;
+                    this.Timer.Enabled = true;
                 }
-                else if (ClickStatus == RepeatClickStatus.Repeating)
-                    Timer.Interval = RepeatClickInterval;
+                else if (this.ClickStatus == RepeatClickStatus.Repeating)
+                    this.Timer.Interval = this.RepeatClickInterval;
                 else
-                    Timer.Enabled = false;
+                    this.Timer.Enabled = false;
             }
         }
 
         private int m_repeatClickDelay = 500;
         public int RepeatClickDelay
         {
-            get    {    return m_repeatClickDelay;    } 
-            set    {    m_repeatClickDelay = value;    }
+            get    {    return this.m_repeatClickDelay;    } 
+            set    { this.m_repeatClickDelay = value;    }
         }
 
         private int m_repeatClickInterval = 100;
         public int RepeatClickInterval
         {
-            get    {    return m_repeatClickInterval;    }
-            set    {    m_repeatClickInterval = value;    }
+            get    {    return this.m_repeatClickInterval;    }
+            set    { this.m_repeatClickInterval = value;    }
         }
 
         private Timer m_timer;
         private Timer Timer
         {
-            get    {    return m_timer;    }
+            get    {    return this.m_timer;    }
         }
 
         public string ToolTipText
         {
-            get    {    return m_toolTipText;    }
+            get    {    return this.m_toolTipText;    }
             set
             {
-                if (m_toolTipText != value)
+                if (this.m_toolTipText != value)
                 {
-                    if (m_toolTip == null)
-                        m_toolTip = new ToolTip(this.components);
-                    m_toolTipText = value;
-                    m_toolTip.SetToolTip(this, value);
+                    if (this.m_toolTip == null)
+                        this.m_toolTip = new ToolTip(this.components);
+                    this.m_toolTipText = value;
+                    this.m_toolTip.SetToolTip(this, value);
                 }
             }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (m_mouseCapture && m_mouseOver)
-                OnClick(RepeatClickEventArgs.Empty);
-            if (ClickStatus == RepeatClickStatus.Started)
-                ClickStatus = RepeatClickStatus.Repeating;
+            if (this.m_mouseCapture && this.m_mouseOver)
+                this.OnClick(RepeatClickEventArgs.Empty);
+            if (this.ClickStatus == RepeatClickStatus.Started)
+                this.ClickStatus = RepeatClickStatus.Repeating;
         }
 
         /// <exclude/>
@@ -325,26 +325,26 @@ namespace WeifenLuo.WinFormsUI.Docking
             if (e.Button != MouseButtons.Left)
                 return;
 
-            if (m_mouseCapture == false || m_mouseOver == false)
+            if (this.m_mouseCapture == false || this.m_mouseOver == false)
             {
-                m_mouseCapture = true;
-                m_mouseOver = true;
+                this.m_mouseCapture = true;
+                this.m_mouseOver = true;
 
                 //Redraw to show button state
-                Invalidate();
+                this.Invalidate();
             }
 
-            if (RepeatClick)
+            if (this.RepeatClick)
             {
-                OnClick(RepeatClickEventArgs.Empty);
-                ClickStatus = RepeatClickStatus.Started;
+                this.OnClick(RepeatClickEventArgs.Empty);
+                this.ClickStatus = RepeatClickStatus.Started;
             }
         }
 
         /// <exclude/>
         protected override void OnClick(EventArgs e)
         {
-            if (RepeatClick && !(e is RepeatClickEventArgs))
+            if (this.RepeatClick && !(e is RepeatClickEventArgs))
                 return;
 
             base.OnClick (e);
@@ -358,17 +358,17 @@ namespace WeifenLuo.WinFormsUI.Docking
             if (e.Button != MouseButtons.Left)
                 return;
 
-            if (m_mouseOver == true || m_mouseCapture == true)
+            if (this.m_mouseOver == true || this.m_mouseCapture == true)
             {
-                m_mouseOver = false;
-                m_mouseCapture = false;
+                this.m_mouseOver = false;
+                this.m_mouseCapture = false;
 
                 // Redraw to show button state
-                Invalidate();
+                this.Invalidate();
             }
 
-            if (RepeatClick)
-                ClickStatus = RepeatClickStatus.Stopped;
+            if (this.RepeatClick)
+                this.ClickStatus = RepeatClickStatus.Stopped;
         }
 
         /// <exclude/>
@@ -380,13 +380,13 @@ namespace WeifenLuo.WinFormsUI.Docking
             bool over = this.ClientRectangle.Contains(new Point(e.X, e.Y));
 
             // If entering the button area or leaving the button area...
-            if (over != m_mouseOver)
+            if (over != this.m_mouseOver)
             {
                 // Update state
-                m_mouseOver = over;
+                this.m_mouseOver = over;
 
                 // Redraw to show button state
-                Invalidate();
+                this.Invalidate();
             }
         }
 
@@ -394,12 +394,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnMouseEnter(EventArgs e)
         {
             // Update state to reflect mouse over the button area
-            if (!m_mouseOver)
+            if (!this.m_mouseOver)
             {
-                m_mouseOver = true;
+                this.m_mouseOver = true;
 
                 // Redraw to show button state
-                Invalidate();
+                this.Invalidate();
             }
 
             base.OnMouseEnter(e);
@@ -409,12 +409,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnMouseLeave(EventArgs e)
         {
             // Update state to reflect mouse not over the button area
-            if (m_mouseOver)
+            if (this.m_mouseOver)
             {
-                m_mouseOver = false;
+                this.m_mouseOver = false;
 
                 // Redraw to show button state
-                Invalidate();
+                this.Invalidate();
             }
 
             base.OnMouseLeave(e);
@@ -424,29 +424,29 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            DrawBackground(e.Graphics);
-            DrawImage(e.Graphics);
-            DrawText(e.Graphics);
-            DrawBorder(e.Graphics);
+            this.DrawBackground(e.Graphics);
+            this.DrawImage(e.Graphics);
+            this.DrawText(e.Graphics);
+            this.DrawBorder(e.Graphics);
         }
 
         private void DrawBackground(Graphics g)
         {
-            using (SolidBrush brush = new SolidBrush(BackColor))
+            using (SolidBrush brush = new SolidBrush(this.BackColor))
             {
-                g.FillRectangle(brush, ClientRectangle);
+                g.FillRectangle(brush, this.ClientRectangle);
             }
         }
 
         private void DrawImage(Graphics g)
         {
-            Image image = this.Enabled ? ImageEnabled : ((ImageDisabled != null) ? ImageDisabled : ImageEnabled);
+            Image image = this.Enabled ? this.ImageEnabled : ((this.ImageDisabled != null) ? this.ImageDisabled : this.ImageEnabled);
             ImageAttributes imageAttr = null;
 
             if (null == image)
                 return;
 
-            if (m_monochrom)
+            if (this.m_monochrom)
             {
                 imageAttr = new ImageAttributes();
 
@@ -465,9 +465,9 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
 
-            if ((!Enabled) && (null == ImageDisabled))
+            if ((!this.Enabled) && (null == this.ImageDisabled))
             {
-                using (Bitmap bitmapMono = new Bitmap(image, ClientRectangle.Size))
+                using (Bitmap bitmapMono = new Bitmap(image, this.ClientRectangle.Size))
                 {
                     if (imageAttr != null)
                     {
@@ -484,12 +484,12 @@ namespace WeifenLuo.WinFormsUI.Docking
                 // Three points provided are upper-left, upper-right and 
                 // lower-left of the destination parallelogram. 
                 Point[] pts = new Point[3];
-                pts[0].X = (Enabled && m_mouseOver && m_mouseCapture) ? 1 : 0;
-                pts[0].Y = (Enabled && m_mouseOver && m_mouseCapture) ? 1 : 0;
-                pts[1].X = pts[0].X + ClientRectangle.Width;
+                pts[0].X = (this.Enabled && this.m_mouseOver && this.m_mouseCapture) ? 1 : 0;
+                pts[0].Y = (this.Enabled && this.m_mouseOver && this.m_mouseCapture) ? 1 : 0;
+                pts[1].X = pts[0].X + this.ClientRectangle.Width;
                 pts[1].Y = pts[0].Y;
                 pts[2].X = pts[0].X;
-                pts[2].Y = pts[1].Y + ClientRectangle.Height;
+                pts[2].Y = pts[1].Y + this.ClientRectangle.Height;
 
                 if (imageAttr == null)
                     g.DrawImage(image, pts, rect, GraphicsUnit.Pixel);
@@ -500,67 +500,67 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private void DrawText(Graphics g)
         {
-            if (Text == string.Empty)
+            if (this.Text == string.Empty)
                 return;
 
-            Rectangle rect = ClientRectangle;
+            Rectangle rect = this.ClientRectangle;
 
-            rect.X += BorderWidth;
-            rect.Y += BorderWidth;
-            rect.Width -= 2 * BorderWidth;
-            rect.Height -= 2 * BorderWidth;
+            rect.X += this.BorderWidth;
+            rect.Y += this.BorderWidth;
+            rect.Width -= 2 * this.BorderWidth;
+            rect.Height -= 2 * this.BorderWidth;
 
             StringFormat stringFormat = new StringFormat();
 
-            if (TextAlign == ContentAlignment.TopLeft)
+            if (this.TextAlign == ContentAlignment.TopLeft)
             {
                 stringFormat.Alignment = StringAlignment.Near;
                 stringFormat.LineAlignment = StringAlignment.Near;
             }
-            else if (TextAlign == ContentAlignment.TopCenter)
+            else if (this.TextAlign == ContentAlignment.TopCenter)
             {
                 stringFormat.Alignment = StringAlignment.Center;
                 stringFormat.LineAlignment = StringAlignment.Near;
             }
-            else if (TextAlign == ContentAlignment.TopRight)
+            else if (this.TextAlign == ContentAlignment.TopRight)
             {
                 stringFormat.Alignment = StringAlignment.Far;
                 stringFormat.LineAlignment = StringAlignment.Near;
             }
-            else if (TextAlign == ContentAlignment.MiddleLeft)
+            else if (this.TextAlign == ContentAlignment.MiddleLeft)
             {
                 stringFormat.Alignment = StringAlignment.Near;
                 stringFormat.LineAlignment = StringAlignment.Center;
             }
-            else if (TextAlign == ContentAlignment.MiddleCenter)
+            else if (this.TextAlign == ContentAlignment.MiddleCenter)
             {
                 stringFormat.Alignment = StringAlignment.Center;
                 stringFormat.LineAlignment = StringAlignment.Center;
             }
-            else if (TextAlign == ContentAlignment.MiddleRight)
+            else if (this.TextAlign == ContentAlignment.MiddleRight)
             {
                 stringFormat.Alignment = StringAlignment.Far;
                 stringFormat.LineAlignment = StringAlignment.Center;
             }
-            else if (TextAlign == ContentAlignment.BottomLeft)
+            else if (this.TextAlign == ContentAlignment.BottomLeft)
             {
                 stringFormat.Alignment = StringAlignment.Near;
                 stringFormat.LineAlignment = StringAlignment.Far;
             }
-            else if (TextAlign == ContentAlignment.BottomCenter)
+            else if (this.TextAlign == ContentAlignment.BottomCenter)
             {
                 stringFormat.Alignment = StringAlignment.Center;
                 stringFormat.LineAlignment = StringAlignment.Far;
             }
-            else if (TextAlign == ContentAlignment.BottomRight)
+            else if (this.TextAlign == ContentAlignment.BottomRight)
             {
                 stringFormat.Alignment = StringAlignment.Far;
                 stringFormat.LineAlignment = StringAlignment.Far;
             }
 
-            using (Brush brush = new SolidBrush(ForeColor))
+            using (Brush brush = new SolidBrush(this.ForeColor))
             {
-                g.DrawString(Text, Font, brush, rect, stringFormat);
+                g.DrawString(this.Text, this.Font, brush, rect, stringFormat);
             }
         }
 
@@ -570,10 +570,10 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             // Decide on the type of border to draw around image
             if (!this.Enabled)
-                bs = IsPopup ? ButtonBorderStyle.Outset : ButtonBorderStyle.Solid;
-            else if (m_mouseOver && m_mouseCapture)
+                bs = this.IsPopup ? ButtonBorderStyle.Outset : ButtonBorderStyle.Solid;
+            else if (this.m_mouseOver && this.m_mouseCapture)
                 bs = ButtonBorderStyle.Inset;
-            else if (IsPopup || m_mouseOver)
+            else if (this.IsPopup || this.m_mouseOver)
                 bs = ButtonBorderStyle.Outset;
             else
                 bs = ButtonBorderStyle.Solid;
@@ -587,33 +587,33 @@ namespace WeifenLuo.WinFormsUI.Docking
             }
             else if (bs == ButtonBorderStyle.Outset)
             {
-                colorLeftTop = m_borderColor.IsEmpty ? this.BackColor : m_borderColor;
+                colorLeftTop = this.m_borderColor.IsEmpty ? this.BackColor : this.m_borderColor;
                 colorRightBottom = this.BackColor;
             }
             else
             {
                 colorLeftTop = this.BackColor;
-                colorRightBottom = m_borderColor.IsEmpty ? this.BackColor : m_borderColor;
+                colorRightBottom = this.m_borderColor.IsEmpty ? this.BackColor : this.m_borderColor;
             }
             ControlPaint.DrawBorder(g, this.ClientRectangle,
-                colorLeftTop, m_borderWidth, bs,
-                colorLeftTop, m_borderWidth, bs,
-                colorRightBottom, m_borderWidth, bs,
-                colorRightBottom, m_borderWidth, bs);
+                colorLeftTop, this.m_borderWidth, bs,
+                colorLeftTop, this.m_borderWidth, bs,
+                colorRightBottom, this.m_borderWidth, bs,
+                colorRightBottom, this.m_borderWidth, bs);
         }
 
         /// <exclude/>
         protected override void OnEnabledChanged(EventArgs e)
         {
             base.OnEnabledChanged(e);
-            if (Enabled == false)
+            if (this.Enabled == false)
             {
-                m_mouseOver = false;
-                m_mouseCapture = false;
-                if (RepeatClick && ClickStatus != RepeatClickStatus.Stopped)
-                    ClickStatus = RepeatClickStatus.Stopped;
+                this.m_mouseOver = false;
+                this.m_mouseCapture = false;
+                if (this.RepeatClick && this.ClickStatus != RepeatClickStatus.Stopped)
+                    this.ClickStatus = RepeatClickStatus.Stopped;
             }
-            Invalidate();
+            this.Invalidate();
         }
     }
 }

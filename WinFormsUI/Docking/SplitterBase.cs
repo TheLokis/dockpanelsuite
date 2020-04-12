@@ -9,7 +9,7 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         public SplitterBase()
         {
-            SetStyle(ControlStyles.Selectable, false);
+            this.SetStyle(ControlStyles.Selectable, false);
         }
 
         public override DockStyle Dock
@@ -17,24 +17,24 @@ namespace WeifenLuo.WinFormsUI.Docking
             get	{	return base.Dock;	}
             set
             {
-                SuspendLayout();
+                this.SuspendLayout();
                 base.Dock = value;
 
-                if (Dock == DockStyle.Left || Dock == DockStyle.Right)
-                    Width = SplitterSize;
-                else if (Dock == DockStyle.Top || Dock == DockStyle.Bottom)
-                    Height = SplitterSize;
+                if (this.Dock == DockStyle.Left || this.Dock == DockStyle.Right)
+                    this.Width = this.SplitterSize;
+                else if (this.Dock == DockStyle.Top || this.Dock == DockStyle.Bottom)
+                    this.Height = this.SplitterSize;
                 else
-                    Bounds = Rectangle.Empty;
+                    this.Bounds = Rectangle.Empty;
 
-                if (Dock == DockStyle.Left || Dock == DockStyle.Right)
-                    Cursor = Cursors.VSplit;
-                else if (Dock == DockStyle.Top || Dock == DockStyle.Bottom)
-                    Cursor = Cursors.HSplit;
+                if (this.Dock == DockStyle.Left || this.Dock == DockStyle.Right)
+                    this.Cursor = Cursors.VSplit;
+                else if (this.Dock == DockStyle.Top || this.Dock == DockStyle.Bottom)
+                    this.Cursor = Cursors.HSplit;
                 else
-                    Cursor = Cursors.Default;
-                    
-                ResumeLayout();
+                    this.Cursor = Cursors.Default;
+
+                this.ResumeLayout();
             }
         }
 
@@ -50,7 +50,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             if (e.Button != MouseButtons.Left)
                 return;
 
-            StartDrag();
+            this.StartDrag();
         }
 
         protected virtual void StartDrag()

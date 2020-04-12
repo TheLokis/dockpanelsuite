@@ -17,23 +17,23 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal DockContentCollection(DockPane pane)
             : base(_emptyList)
         {
-            m_dockPane = pane;
+            this.m_dockPane = pane;
         }
 
         private DockPane m_dockPane = null;
         private DockPane DockPane
         {
-            get { return m_dockPane; }
+            get { return this.m_dockPane; }
         }
 
         public new IDockContent this[int index]
         {
             get
             {
-                if (DockPane == null)
-                    return Items[index] as IDockContent;
+                if (this.DockPane == null)
+                    return this.Items[index] as IDockContent;
                 else
-                    return GetVisibleContent(index);
+                    return this.GetVisibleContent(index);
             }
         }
 
@@ -44,11 +44,11 @@ namespace WeifenLuo.WinFormsUI.Docking
                 throw new InvalidOperationException();
 #endif
 
-            if (Contains(content))
-                return IndexOf(content);
+            if (this.Contains(content))
+                return this.IndexOf(content);
 
-            Items.Add(content);
-            return Count - 1;
+            this.Items.Add(content);
+            return this.Count - 1;
         }
 
         internal void AddAt(IDockContent content, int index)
@@ -58,56 +58,56 @@ namespace WeifenLuo.WinFormsUI.Docking
                 throw new InvalidOperationException();
 #endif
 
-            if (index < 0 || index > Items.Count - 1)
+            if (index < 0 || index > this.Items.Count - 1)
                 return;
 
-            if (Contains(content))
+            if (this.Contains(content))
                 return;
 
-            Items.Insert(index, content);
+            this.Items.Insert(index, content);
         }
 
         public new bool Contains(IDockContent content)
         {
-            if (DockPane == null)
-                return Items.Contains(content);
+            if (this.DockPane == null)
+                return this.Items.Contains(content);
             else
-                return (GetIndexOfVisibleContents(content) != -1);
+                return (this.GetIndexOfVisibleContents(content) != -1);
         }
 
         public new int Count
         {
             get
             {
-                if (DockPane == null)
+                if (this.DockPane == null)
                     return base.Count;
                 else
-                    return CountOfVisibleContents;
+                    return this.CountOfVisibleContents;
             }
         }
 
         public new int IndexOf(IDockContent content)
         {
-            if (DockPane == null)
+            if (this.DockPane == null)
             {
-                if (!Contains(content))
+                if (!this.Contains(content))
                     return -1;
                 else
-                    return Items.IndexOf(content);
+                    return this.Items.IndexOf(content);
             }
             else
-                return GetIndexOfVisibleContents(content);
+                return this.GetIndexOfVisibleContents(content);
         }
 
         internal void Remove(IDockContent content)
         {
-            if (DockPane != null)
+            if (this.DockPane != null)
                 throw new InvalidOperationException();
 
-            if (!Contains(content))
+            if (!this.Contains(content))
                 return;
 
-            Items.Remove(content);
+            this.Items.Remove(content);
         }
 
         private int CountOfVisibleContents
@@ -120,9 +120,9 @@ namespace WeifenLuo.WinFormsUI.Docking
 #endif
 
                 int count = 0;
-                foreach (IDockContent content in DockPane.Contents)
+                foreach (IDockContent content in this.DockPane.Contents)
                 {
-                    if (content.DockHandler.DockState == DockPane.DockState)
+                    if (content.DockHandler.DockState == this.DockPane.DockState)
                         count++;
                 }
                 return count;
@@ -137,9 +137,9 @@ namespace WeifenLuo.WinFormsUI.Docking
 #endif
 
             int currentIndex = -1;
-            foreach (IDockContent content in DockPane.Contents)
+            foreach (IDockContent content in this.DockPane.Contents)
             {
-                if (content.DockHandler.DockState == DockPane.DockState)
+                if (content.DockHandler.DockState == this.DockPane.DockState)
                     currentIndex++;
 
                 if (currentIndex == index)
@@ -159,9 +159,9 @@ namespace WeifenLuo.WinFormsUI.Docking
                 return -1;
 
             int index = -1;
-            foreach (IDockContent c in DockPane.Contents)
+            foreach (IDockContent c in this.DockPane.Contents)
             {
-                if (c.DockHandler.DockState == DockPane.DockState)
+                if (c.DockHandler.DockState == this.DockPane.DockState)
                 {
                     index++;
 

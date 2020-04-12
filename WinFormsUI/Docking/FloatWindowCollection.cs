@@ -15,28 +15,28 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         internal int Add(FloatWindow fw)
         {
-            if (Items.Contains(fw))
-                return Items.IndexOf(fw);
+            if (this.Items.Contains(fw))
+                return this.Items.IndexOf(fw);
 
-            Items.Add(fw);
-            return Count - 1;
+            this.Items.Add(fw);
+            return this.Count - 1;
         }
 
         internal void Dispose()
         {
-            for (int i=Count - 1; i>=0; i--)
+            for (int i= this.Count - 1; i>=0; i--)
                 this[i].Close();
         }
 
         internal void Remove(FloatWindow fw)
         {
-            Items.Remove(fw);
+            this.Items.Remove(fw);
         }
 
         internal void BringWindowToFront(FloatWindow fw)
         {
-            Items.Remove(fw);
-            Items.Add(fw);
+            this.Items.Remove(fw);
+            this.Items.Add(fw);
         }
     }
 }

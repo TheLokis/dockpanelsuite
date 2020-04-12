@@ -11,10 +11,10 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         public DockContent()
         {
-            m_dockHandler = new DockContentHandler(this, new GetPersistStringCallback(GetPersistString));
-            m_dockHandler.DockStateChanged += new EventHandler(DockHandler_DockStateChanged);
+            this.m_dockHandler = new DockContentHandler(this, new GetPersistStringCallback(this.GetPersistString));
+            this.m_dockHandler.DockStateChanged += new EventHandler(this.DockHandler_DockStateChanged);
             //Suggested as a fix by bensty regarding form resize
-            this.ParentChanged += new EventHandler(DockContent_ParentChanged);
+            this.ParentChanged += new EventHandler(this.DockContent_ParentChanged);
         }
 
         //Suggested as a fix by bensty regarding form resize
@@ -28,7 +28,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         [Browsable(false)]
         public DockContentHandler DockHandler
         {
-            get	{	return m_dockHandler;	}
+            get	{	return this.m_dockHandler;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -36,8 +36,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(true)]
         public bool AllowEndUserDocking
         {
-            get	{	return DockHandler.AllowEndUserDocking;	}
-            set	{	DockHandler.AllowEndUserDocking = value;	}
+            get	{	return this.DockHandler.AllowEndUserDocking;	}
+            set	{ this.DockHandler.AllowEndUserDocking = value;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -45,8 +45,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(DockAreas.DockLeft|DockAreas.DockRight|DockAreas.DockTop|DockAreas.DockBottom|DockAreas.Document|DockAreas.Float)]
         public DockAreas DockAreas
         {
-            get	{	return DockHandler.DockAreas;	}
-            set	{	DockHandler.DockAreas = value;	}
+            get	{	return this.DockHandler.DockAreas;	}
+            set	{ this.DockHandler.DockAreas = value;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -54,8 +54,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(0.25)]
         public double AutoHidePortion
         {
-            get	{	return DockHandler.AutoHidePortion;	}
-            set	{	DockHandler.AutoHidePortion = value;	}
+            get	{	return this.DockHandler.AutoHidePortion;	}
+            set	{ this.DockHandler.AutoHidePortion = value;	}
         }
 
         private string m_tabText = null;
@@ -65,13 +65,13 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(null)]
         public string TabText
         {
-            get { return m_tabText; }
-            set { DockHandler.TabText = m_tabText = value; }
+            get { return this.m_tabText; }
+            set { this.DockHandler.TabText = this.m_tabText = value; }
         }
 
         private bool ShouldSerializeTabText()
         {
-            return (m_tabText != null);
+            return (this.m_tabText != null);
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -79,8 +79,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(true)]
         public bool CloseButton
         {
-            get	{	return DockHandler.CloseButton;	}
-            set	{	DockHandler.CloseButton = value;	}
+            get	{	return this.DockHandler.CloseButton;	}
+            set	{ this.DockHandler.CloseButton = value;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -88,78 +88,78 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(true)]
         public bool CloseButtonVisible
         {
-            get { return DockHandler.CloseButtonVisible; }
-            set { DockHandler.CloseButtonVisible = value; }
+            get { return this.DockHandler.CloseButtonVisible; }
+            set { this.DockHandler.CloseButtonVisible = value; }
         }
         
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockPanel DockPanel
         {
-            get {	return DockHandler.DockPanel; }
-            set	{	DockHandler.DockPanel = value;	}
+            get {	return this.DockHandler.DockPanel; }
+            set	{ this.DockHandler.DockPanel = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockState DockState
         {
-            get	{	return DockHandler.DockState;	}
-            set	{	DockHandler.DockState = value;	}
+            get	{	return this.DockHandler.DockState;	}
+            set	{ this.DockHandler.DockState = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockPane Pane
         {
-            get {	return DockHandler.Pane; }
-            set	{	DockHandler.Pane = value;		}
+            get {	return this.DockHandler.Pane; }
+            set	{ this.DockHandler.Pane = value;		}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsHidden
         {
-            get	{	return DockHandler.IsHidden;	}
-            set	{	DockHandler.IsHidden = value;	}
+            get	{	return this.DockHandler.IsHidden;	}
+            set	{ this.DockHandler.IsHidden = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockState VisibleState
         {
-            get	{	return DockHandler.VisibleState;	}
-            set	{	DockHandler.VisibleState = value;	}
+            get	{	return this.DockHandler.VisibleState;	}
+            set	{ this.DockHandler.VisibleState = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool IsFloat
         {
-            get	{	return DockHandler.IsFloat;	}
-            set	{	DockHandler.IsFloat = value;	}
+            get	{	return this.DockHandler.IsFloat;	}
+            set	{ this.DockHandler.IsFloat = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockPane PanelPane
         {
-            get	{	return DockHandler.PanelPane;	}
-            set	{	DockHandler.PanelPane = value;	}
+            get	{	return this.DockHandler.PanelPane;	}
+            set	{ this.DockHandler.PanelPane = value;	}
         }
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public DockPane FloatPane
         {
-            get	{	return DockHandler.FloatPane;	}
-            set	{	DockHandler.FloatPane = value;	}
+            get	{	return this.DockHandler.FloatPane;	}
+            set	{ this.DockHandler.FloatPane = value;	}
         }
 
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
         protected virtual string GetPersistString()
         {
-            return GetType().ToString();
+            return this.GetType().ToString();
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -167,8 +167,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(false)]
         public bool HideOnClose
         {
-            get	{	return DockHandler.HideOnClose;	}
-            set	{	DockHandler.HideOnClose = value;	}
+            get	{	return this.DockHandler.HideOnClose;	}
+            set	{ this.DockHandler.HideOnClose = value;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -176,19 +176,19 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(DockState.Unknown)]
         public DockState ShowHint
         {
-            get	{	return DockHandler.ShowHint;	}
-            set	{	DockHandler.ShowHint = value;	}
+            get	{	return this.DockHandler.ShowHint;	}
+            set	{ this.DockHandler.ShowHint = value;	}
         }
 
         [Browsable(false)]
         public bool IsActivated
         {
-            get	{	return DockHandler.IsActivated;	}
+            get	{	return this.DockHandler.IsActivated;	}
         }
 
         public bool IsDockStateValid(DockState dockState)
         {
-            return DockHandler.IsDockStateValid(dockState);
+            return this.DockHandler.IsDockStateValid(dockState);
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -196,8 +196,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(null)]
         public ContextMenu TabPageContextMenu
         {
-            get	{	return DockHandler.TabPageContextMenu;	}
-            set	{	DockHandler.TabPageContextMenu = value;	}
+            get	{	return this.DockHandler.TabPageContextMenu;	}
+            set	{ this.DockHandler.TabPageContextMenu = value;	}
         }
 
         [LocalizedCategory("Category_Docking")]
@@ -205,8 +205,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(null)]
         public ContextMenuStrip TabPageContextMenuStrip
         {
-            get { return DockHandler.TabPageContextMenuStrip; }
-            set { DockHandler.TabPageContextMenuStrip = value; }
+            get { return this.DockHandler.TabPageContextMenuStrip; }
+            set { this.DockHandler.TabPageContextMenuStrip = value; }
         }
 
         [Localizable(true)]
@@ -215,65 +215,65 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(null)]
         public string ToolTipText
         {
-            get	{	return DockHandler.ToolTipText;	}
-            set {	DockHandler.ToolTipText = value;	}
+            get	{	return this.DockHandler.ToolTipText;	}
+            set { this.DockHandler.ToolTipText = value;	}
         }
 
         public new void Activate()
         {
-            DockHandler.Activate();
+            this.DockHandler.Activate();
         }
 
         public new void Hide()
         {
-            DockHandler.Hide();
+            this.DockHandler.Hide();
         }
 
         public new void Show()
         {
-            DockHandler.Show();
+            this.DockHandler.Show();
         }
 
         public void Show(DockPanel dockPanel)
         {
-            DockHandler.Show(dockPanel);
+            this.DockHandler.Show(dockPanel);
         }
 
         public void Show(DockPanel dockPanel, DockState dockState)
         {
-            DockHandler.Show(dockPanel, dockState);
+            this.DockHandler.Show(dockPanel, dockState);
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1720:AvoidTypeNamesInParameters")]
         public void Show(DockPanel dockPanel, Rectangle floatWindowBounds)
         {
-            DockHandler.Show(dockPanel, floatWindowBounds);
+            this.DockHandler.Show(dockPanel, floatWindowBounds);
         }
 
         public void Show(DockPane pane, IDockContent beforeContent)
         {
-            DockHandler.Show(pane, beforeContent);
+            this.DockHandler.Show(pane, beforeContent);
         }
 
         public void Show(DockPane previousPane, DockAlignment alignment, double proportion)
         {
-            DockHandler.Show(previousPane, alignment, proportion);
+            this.DockHandler.Show(previousPane, alignment, proportion);
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1720:AvoidTypeNamesInParameters")]
         public void FloatAt(Rectangle floatWindowBounds)
         {
-            DockHandler.FloatAt(floatWindowBounds);
+            this.DockHandler.FloatAt(floatWindowBounds);
         }
 
         public void DockTo(DockPane paneTo, DockStyle dockStyle, int contentIndex)
         {
-            DockHandler.DockTo(paneTo, dockStyle, contentIndex);
+            this.DockHandler.DockTo(paneTo, dockStyle, contentIndex);
         }
 
         public void DockTo(DockPanel panel, DockStyle dockStyle)
         {
-            DockHandler.DockTo(panel, dockStyle);
+            this.DockHandler.DockTo(panel, dockStyle);
         }
 
         #region IDockContent Members
@@ -291,7 +291,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         #region Events
         private void DockHandler_DockStateChanged(object sender, EventArgs e)
         {
-            OnDockStateChanged(e);
+            this.OnDockStateChanged(e);
         }
 
         private static readonly object DockStateChangedEvent = new object();
@@ -299,12 +299,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         [LocalizedDescription("Pane_DockStateChanged_Description")]
         public event EventHandler DockStateChanged
         {
-            add	{	Events.AddHandler(DockStateChangedEvent, value);	}
-            remove	{	Events.RemoveHandler(DockStateChangedEvent, value);	}
+            add	{ this.Events.AddHandler(DockStateChangedEvent, value);	}
+            remove	{ this.Events.RemoveHandler(DockStateChangedEvent, value);	}
         }
         protected virtual void OnDockStateChanged(EventArgs e)
         {
-            EventHandler handler = (EventHandler)Events[DockStateChangedEvent];
+            EventHandler handler = (EventHandler)this.Events[DockStateChangedEvent];
             if (handler != null)
                 handler(this, e);
         }
@@ -319,9 +319,9 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </remarks>
         protected override void OnSizeChanged(EventArgs e)
         {
-            if (DockPanel != null && DockPanel.SupportDeeplyNestedContent && IsHandleCreated)
+            if (this.DockPanel != null && this.DockPanel.SupportDeeplyNestedContent && this.IsHandleCreated)
             {
-                BeginInvoke((MethodInvoker)delegate
+                this.BeginInvoke((MethodInvoker)delegate
                 {
                     base.OnSizeChanged(e);
                 });

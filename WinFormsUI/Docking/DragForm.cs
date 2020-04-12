@@ -26,11 +26,11 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         public DragForm()
         {
-            FormBorderStyle = FormBorderStyle.None;
-            ShowInTaskbar = false;
-            SetStyle(ControlStyles.Selectable, false);
-            Enabled = false;
-            TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.ShowInTaskbar = false;
+            this.SetStyle(ControlStyles.Selectable, false);
+            this.Enabled = false;
+            this.TopMost = true;
         }
 
         protected override CreateParams CreateParams
@@ -61,10 +61,10 @@ namespace WeifenLuo.WinFormsUI.Docking
         }
         public virtual void Show(bool bActivate)
         {
-                Show();
+            this.Show();
 
                 if (bActivate)
-                    Activate();
+                this.Activate();
         }
     }
 }

@@ -14,8 +14,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [Browsable(false)]
         public DockPanelSkin Skin
         {
-            get { return m_dockPanelSkin;  }
-            set { m_dockPanelSkin = value; }
+            get { return this.m_dockPanelSkin;  }
+            set { this.m_dockPanelSkin = value; }
         }
         
         private ThemeBase m_dockPanelTheme = new VS2005Theme();
@@ -23,7 +23,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         [LocalizedDescription("DockPanel_DockPanelTheme")]
         public ThemeBase Theme
         {
-            get { return m_dockPanelTheme; }
+            get { return this.m_dockPanelTheme; }
             set
             {
                 if (value == null)
@@ -31,13 +31,13 @@ namespace WeifenLuo.WinFormsUI.Docking
                     return;
                 }
 
-                if (m_dockPanelTheme.GetType() == value.GetType())
+                if (this.m_dockPanelTheme.GetType() == value.GetType())
                 {
                     return;
                 }
 
-                m_dockPanelTheme = value;
-                m_dockPanelTheme.Apply(this);
+                this.m_dockPanelTheme = value;
+                this.m_dockPanelTheme.Apply(this);
             }
         }
     }

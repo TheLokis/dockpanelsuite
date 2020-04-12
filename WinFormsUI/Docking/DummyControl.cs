@@ -7,7 +7,7 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         public DummyControl()
         {
-            SetStyle(ControlStyles.Selectable, false);
+            this.SetStyle(ControlStyles.Selectable, false);
         }
     }
 }

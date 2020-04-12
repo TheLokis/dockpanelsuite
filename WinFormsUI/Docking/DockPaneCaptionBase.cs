@@ -10,34 +10,34 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         protected internal DockPaneCaptionBase(DockPane pane)
         {
-            m_dockPane = pane;
+            this.m_dockPane = pane;
 
-            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
                 ControlStyles.ResizeRedraw |
                 ControlStyles.UserPaint |
                 ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.Selectable, false);
+            this.SetStyle(ControlStyles.Selectable, false);
         }
 
         private DockPane m_dockPane;
         protected DockPane DockPane
         {
-            get	{	return m_dockPane;	}
+            get	{	return this.m_dockPane;	}
         }
 
         protected DockPane.AppearanceStyle Appearance
         {
-            get	{	return DockPane.Appearance;	}
+            get	{	return this.DockPane.Appearance;	}
         }
 
         protected bool HasTabPageContextMenu
         {
-            get { return DockPane.HasTabPageContextMenu; }
+            get { return this.DockPane.HasTabPageContextMenu; }
         }
 
         protected void ShowTabPageContextMenu(Point position)
         {
-            DockPane.ShowTabPageContextMenu(this, position);
+            this.DockPane.ShowTabPageContextMenu(this, position);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -45,7 +45,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.OnMouseUp(e);
 
             if (e.Button == MouseButtons.Right)
-                ShowTabPageContextMenu(new Point(e.X, e.Y));
+                this.ShowTabPageContextMenu(new Point(e.X, e.Y));
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -53,12 +53,12 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.OnMouseDown(e);
 
             if (e.Button == MouseButtons.Left &&
-                DockPane.DockPanel.AllowEndUserDocking &&
-				DockPane.DockPanel.AllowChangeLayout &&
-                DockPane.AllowDockDragAndDrop &&
-                !DockHelper.IsDockStateAutoHide(DockPane.DockState) &&
-                DockPane.ActiveContent != null)
-                DockPane.DockPanel.BeginDrag(DockPane);
+                this.DockPane.DockPanel.AllowEndUserDocking &&
+                this.DockPane.DockPanel.AllowChangeLayout &&
+                this.DockPane.AllowDockDragAndDrop &&
+                !DockHelper.IsDockStateAutoHide(this.DockPane.DockState) &&
+                this.DockPane.ActiveContent != null)
+                this.DockPane.DockPanel.BeginDrag(this.DockPane);
         }
 
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]         
@@ -66,29 +66,29 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             if (m.Msg == (int)Win32.Msgs.WM_LBUTTONDBLCLK)
             {
-                if (DockHelper.IsDockStateAutoHide(DockPane.DockState))
+                if (DockHelper.IsDockStateAutoHide(this.DockPane.DockState))
                 {
-                    DockPane.DockPanel.ActiveAutoHideContent = null;
+                    this.DockPane.DockPanel.ActiveAutoHideContent = null;
                     return;
                 }
 
-				if ( !DockPane.DockPanel.AllowChangeLayout )
+				if ( !this.DockPane.DockPanel.AllowChangeLayout )
 					return;
 
-                if (DockPane.IsFloat)
-                    DockPane.RestoreToPanel();
+                if (this.DockPane.IsFloat)
+                    this.DockPane.RestoreToPanel();
                 else
-                    DockPane.Float();
+                    this.DockPane.Float();
             }
             base.WndProc(ref m);
         }
 
         internal void RefreshChanges()
         {
-            if (IsDisposed)
+            if (this.IsDisposed)
                 return;
 
-            OnRefreshChanges();
+            this.OnRefreshChanges();
         }
 
         protected virtual void OnRightToLeftLayoutChanged()

@@ -24,17 +24,17 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             get
             {
-                Rectangle rect = ClientRectangle;
-                if (DockState == DockState.DockLeft)
+                Rectangle rect = this.ClientRectangle;
+                if (this.DockState == DockState.DockLeft)
                     rect.Width -= Measures.SplitterSize;
-                else if (DockState == DockState.DockRight)
+                else if (this.DockState == DockState.DockRight)
                 {
                     rect.X += Measures.SplitterSize;
                     rect.Width -= Measures.SplitterSize;
                 }
-                else if (DockState == DockState.DockTop)
+                else if (this.DockState == DockState.DockTop)
                     rect.Height -= Measures.SplitterSize;
-                else if (DockState == DockState.DockBottom)
+                else if (this.DockState == DockState.DockBottom)
                 {
                     rect.Y += Measures.SplitterSize;
                     rect.Height -= Measures.SplitterSize;
@@ -56,37 +56,37 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             protected override void StartDrag()
             {
-                DockWindow window = Parent as DockWindow;
+                DockWindow window = this.Parent as DockWindow;
                 if (window == null)
                     return;
 
                 if (!window.DockPanel.AllowChangeLayout)
                     return;
 
-                window.DockPanel.BeginDrag(window, window.RectangleToScreen(Bounds));
+                window.DockPanel.BeginDrag(window, window.RectangleToScreen(this.Bounds));
             }
 
             protected override void OnPaint(PaintEventArgs e)
             {
                 base.OnPaint(e);
 
-                Rectangle rect = ClientRectangle;
+                Rectangle rect = this.ClientRectangle;
 
                 if (rect.Width <= 0 || rect.Height <= 0)
                     return;
 
-                DockWindow window = Parent as DockWindow;
+                DockWindow window = this.Parent as DockWindow;
                 if (window == null)
                     return;
 
                 if (this._horizontalBrush == null)
                 {
                     var skin = window.DockPanel.Skin;
-                    _horizontalBrush = new SolidBrush(skin.DockPaneStripSkin.DocumentGradient.ActiveTabGradient.EndColor);
-                    _verticalSurroundColors = new[] { skin.DockPaneStripSkin.DocumentGradient.InactiveTabGradient.StartColor };
+                    this._horizontalBrush = new SolidBrush(skin.DockPaneStripSkin.DocumentGradient.ActiveTabGradient.EndColor);
+                    this._verticalSurroundColors = new[] { skin.DockPaneStripSkin.DocumentGradient.InactiveTabGradient.StartColor };
                 }
 
-                switch (Dock)
+                switch (this.Dock)
                 {
                     case DockStyle.Right:
                     case DockStyle.Left:
@@ -108,7 +108,7 @@ namespace WeifenLuo.WinFormsUI.Docking
                     case DockStyle.Bottom:
                     case DockStyle.Top:
                         {
-                            e.Graphics.FillRectangle(_horizontalBrush, rect.X, rect.Y,
+                            e.Graphics.FillRectangle(this._horizontalBrush, rect.X, rect.Y,
                                                      rect.Width, Measures.SplitterSize);
                         }
                         break;

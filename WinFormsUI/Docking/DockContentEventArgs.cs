@@ -8,12 +8,12 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public DockContentEventArgs(IDockContent content)
         {
-            m_content = content;
+            this.m_content = content;
         }
 
         public IDockContent Content
         {
-            get { return m_content; }
+            get { return this.m_content; }
         }
     }
 }

@@ -18,27 +18,27 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             public Tab(IDockContent content)
             {
-                m_content = content;
+                this.m_content = content;
             }
 
             ~Tab()
             {
-                Dispose(false);
+                this.Dispose(false);
             }
 
             public IDockContent Content
             {
-                get { return m_content; }
+                get { return this.m_content; }
             }
 
             public Form ContentForm
             {
-                get { return m_content as Form; }
+                get { return this.m_content as Form; }
             }
 
             public void Dispose()
             {
-                Dispose(true);
+                this.Dispose(true);
                 GC.SuppressFinalize(this);
             }
 
@@ -53,52 +53,52 @@ namespace WeifenLuo.WinFormsUI.Docking
             #region IEnumerable Members
             IEnumerator<Tab> IEnumerable<Tab>.GetEnumerator()
             {
-                for (int i = 0; i < Count; i++)
+                for (int i = 0; i < this.Count; i++)
                     yield return this[i];
             }
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                for (int i = 0; i < Count; i++)
+                for (int i = 0; i < this.Count; i++)
                     yield return this[i];
             }
             #endregion
 
             internal TabCollection(DockPane pane)
             {
-                m_dockPane = pane;
+                this.m_dockPane = pane;
             }
 
             private DockPane m_dockPane;
             public DockPane DockPane
             {
-                get { return m_dockPane; }
+                get { return this.m_dockPane; }
             }
 
             public int Count
             {
-                get { return DockPane.DisplayingContents.Count; }
+                get { return this.DockPane.DisplayingContents.Count; }
             }
 
             public Tab this[int index]
             {
                 get
                 {
-                    IDockContent content = DockPane.DisplayingContents[index];
+                    IDockContent content = this.DockPane.DisplayingContents[index];
                     if (content == null)
                         throw (new ArgumentOutOfRangeException("index"));
-                    return content.DockHandler.GetTab(DockPane.TabStripControl);
+                    return content.DockHandler.GetTab(this.DockPane.TabStripControl);
                 }
             }
 
             public bool Contains(Tab tab)
             {
-                return (IndexOf(tab) != -1);
+                return (this.IndexOf(tab) != -1);
             }
 
             public bool Contains(IDockContent content)
             {
-                return (IndexOf(content) != -1);
+                return (this.IndexOf(content) != -1);
             }
 
             public int IndexOf(Tab tab)
@@ -106,33 +106,33 @@ namespace WeifenLuo.WinFormsUI.Docking
                 if (tab == null)
                     return -1;
 
-                return DockPane.DisplayingContents.IndexOf(tab.Content);
+                return this.DockPane.DisplayingContents.IndexOf(tab.Content);
             }
 
             public int IndexOf(IDockContent content)
             {
-                return DockPane.DisplayingContents.IndexOf(content);
+                return this.DockPane.DisplayingContents.IndexOf(content);
             }
         }
 
         protected DockPaneStripBase(DockPane pane)
         {
-            m_dockPane = pane;
+            this.m_dockPane = pane;
 
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.Selectable, false);
-            AllowDrop = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.Selectable, false);
+            this.AllowDrop = true;
         }
 
         private DockPane m_dockPane;
         protected DockPane DockPane
         {
-            get	{	return m_dockPane;	}
+            get	{	return this.m_dockPane;	}
         }
 
         protected DockPane.AppearanceStyle Appearance
         {
-            get	{	return DockPane.Appearance;	}
+            get	{	return this.DockPane.Appearance;	}
         }
 
         private TabCollection m_tabs = null;
@@ -140,19 +140,19 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             get
             {
-                if (m_tabs == null)
-                    m_tabs = new TabCollection(DockPane);
+                if (this.m_tabs == null)
+                    this.m_tabs = new TabCollection(this.DockPane);
 
-                return m_tabs;
+                return this.m_tabs;
             }
         }
 
         internal void RefreshChanges()
         {
-            if (IsDisposed)
+            if (this.IsDisposed)
                 return;
 
-            OnRefreshChanges();
+            this.OnRefreshChanges();
         }
 
         protected virtual void OnRefreshChanges()
@@ -165,7 +165,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         protected int HitTest()
         {
-            return HitTest(PointToClient(Control.MousePosition));
+            return this.HitTest(this.PointToClient(Control.MousePosition));
         }
 
         protected internal abstract int HitTest(Point point);
@@ -182,27 +182,27 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             base.OnMouseDown(e);
 
-            int index = HitTest();
+            int index = this.HitTest();
             if (index != -1)
             {
                 if (e.Button == MouseButtons.Middle)
                 {
                     // Close the specified content.
-                    IDockContent content = Tabs[index].Content;
-                    DockPane.CloseContent(content);
+                    IDockContent content = this.Tabs[index].Content;
+                    this.DockPane.CloseContent(content);
                 }
                 else
                 {
-                    IDockContent content = Tabs[index].Content;
-                    if (DockPane.ActiveContent != content)
-                        DockPane.ActiveContent = content;
+                    IDockContent content = this.Tabs[index].Content;
+                    if (this.DockPane.ActiveContent != content)
+                        this.DockPane.ActiveContent = content;
                 }
             }
 
             if (e.Button == MouseButtons.Left)
             {
                 var dragSize = SystemInformation.DragSize;
-                _dragBox = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                this._dragBox = new Rectangle(new Point(e.X - (dragSize.Width / 2),
                                                 e.Y - (dragSize.Height / 2)), dragSize);
             }
         }
@@ -211,24 +211,24 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             base.OnMouseMove(e);
 
-            if (e.Button != MouseButtons.Left || _dragBox.Contains(e.Location)) 
+            if (e.Button != MouseButtons.Left || this._dragBox.Contains(e.Location)) 
                 return;
 
-            if (DockPane.ActiveContent == null)
+            if (this.DockPane.ActiveContent == null)
                 return;
 
-            if (DockPane.DockPanel.AllowEndUserDocking && DockPane.DockPanel.AllowChangeLayout && DockPane.AllowDockDragAndDrop && DockPane.ActiveContent.DockHandler.AllowEndUserDocking)
-                DockPane.DockPanel.BeginDrag(DockPane.ActiveContent.DockHandler);
+            if (this.DockPane.DockPanel.AllowEndUserDocking && this.DockPane.DockPanel.AllowChangeLayout && this.DockPane.AllowDockDragAndDrop && this.DockPane.ActiveContent.DockHandler.AllowEndUserDocking)
+                this.DockPane.DockPanel.BeginDrag(this.DockPane.ActiveContent.DockHandler);
         }
 
         protected bool HasTabPageContextMenu
         {
-            get { return DockPane.HasTabPageContextMenu; }
+            get { return this.DockPane.HasTabPageContextMenu; }
         }
 
         protected void ShowTabPageContextMenu(Point position)
         {
-            DockPane.ShowTabPageContextMenu(this, position);
+            this.DockPane.ShowTabPageContextMenu(this, position);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
@@ -236,7 +236,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             base.OnMouseUp(e);
 
             if (e.Button == MouseButtons.Right)
-                ShowTabPageContextMenu(new Point(e.X, e.Y));
+                this.ShowTabPageContextMenu(new Point(e.X, e.Y));
         }
 
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.UnmanagedCode)]
@@ -246,10 +246,10 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 base.WndProc(ref m);
 
-                int index = HitTest();
-                if (DockPane.DockPanel.AllowEndUserDocking && DockPane.DockPanel.AllowChangeLayout && index != -1)
+                int index = this.HitTest();
+                if (this.DockPane.DockPanel.AllowEndUserDocking && this.DockPane.DockPanel.AllowChangeLayout && index != -1)
                 {
-                    IDockContent content = Tabs[index].Content;
+                    IDockContent content = this.Tabs[index].Content;
                     if (content.DockHandler.CheckDockState(!content.DockHandler.IsFloat) != DockState.Unknown)
                         content.DockHandler.IsFloat = !content.DockHandler.IsFloat;	
                 }
@@ -265,12 +265,12 @@ namespace WeifenLuo.WinFormsUI.Docking
         {
             base.OnDragOver(drgevent);
 
-            int index = HitTest();
+            int index = this.HitTest();
             if (index != -1)
             {
-                IDockContent content = Tabs[index].Content;
-                if (DockPane.ActiveContent != content)
-                    DockPane.ActiveContent = content;
+                IDockContent content = this.Tabs[index].Content;
+                if (this.DockPane.ActiveContent != content)
+                    this.DockPane.ActiveContent = content;
             }
         }
 
@@ -297,7 +297,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             public DockPaneStripAccessibleObject(DockPaneStripBase strip)
                 : base(strip)
             {
-                _strip = strip;
+                this._strip = strip;
             }
 
             public override AccessibleRole Role
@@ -310,22 +310,22 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             public override int GetChildCount()
             {
-                return _strip.Tabs.Count;
+                return this._strip.Tabs.Count;
             }
 
             public override AccessibleObject GetChild(int index)
             {
-                return new DockPaneStripTabAccessibleObject(_strip, _strip.Tabs[index], this);
+                return new DockPaneStripTabAccessibleObject(this._strip, this._strip.Tabs[index], this);
             }
 
             public override AccessibleObject HitTest(int x, int y)
             {
                 Point point = new Point(x, y);
-                foreach (Tab tab in _strip.Tabs)
+                foreach (Tab tab in this._strip.Tabs)
                 {
-                    Rectangle rectangle = _strip.GetTabBounds(tab);
-                    if (ToScreen(rectangle, _strip).Contains(point))
-                        return new DockPaneStripTabAccessibleObject(_strip, tab, this);
+                    Rectangle rectangle = this._strip.GetTabBounds(tab);
+                    if (ToScreen(rectangle, this._strip).Contains(point))
+                        return new DockPaneStripTabAccessibleObject(this._strip, tab, this);
                 }
 
                 return null;
@@ -341,17 +341,17 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             internal DockPaneStripTabAccessibleObject(DockPaneStripBase strip, Tab tab, AccessibleObject parent)
             {
-                _strip = strip;
-                _tab = tab;
+                this._strip = strip;
+                this._tab = tab;
 
-                _parent = parent;
+                this._parent = parent;
             }
 
             public override AccessibleObject Parent
             {
                 get
                 {
-                    return _parent;
+                    return this._parent;
                 }
             }
 
@@ -367,8 +367,8 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 get
                 {
-                    Rectangle rectangle = _strip.GetTabBounds(_tab);
-                    return ToScreen(rectangle, _strip);
+                    Rectangle rectangle = this._strip.GetTabBounds(this._tab);
+                    return ToScreen(rectangle, this._strip);
                 }
             }
 
@@ -376,7 +376,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             {
                 get
                 {
-                    return _tab.Content.DockHandler.TabText;
+                    return this._tab.Content.DockHandler.TabText;
                 }
                 set
                 {

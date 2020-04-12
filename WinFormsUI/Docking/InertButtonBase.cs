@@ -11,8 +11,8 @@ namespace WeifenLuo.WinFormsUI.Docking
     {
         protected InertButtonBase()
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.Transparent;
         }
 
         public abstract Bitmap Image
@@ -23,14 +23,14 @@ namespace WeifenLuo.WinFormsUI.Docking
         private bool m_isMouseOver = false;
         protected bool IsMouseOver
         {
-            get { return m_isMouseOver; }
+            get { return this.m_isMouseOver; }
             private set
             {
-                if (m_isMouseOver == value)
+                if (this.m_isMouseOver == value)
                     return;
 
-                m_isMouseOver = value;
-                Invalidate();
+                this.m_isMouseOver = value;
+                this.Invalidate();
             }
         }
 
@@ -42,32 +42,32 @@ namespace WeifenLuo.WinFormsUI.Docking
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            bool over = ClientRectangle.Contains(e.X, e.Y);
-            if (IsMouseOver != over)
-                IsMouseOver = over;
+            bool over = this.ClientRectangle.Contains(e.X, e.Y);
+            if (this.IsMouseOver != over)
+                this.IsMouseOver = over;
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            if (!IsMouseOver)
-                IsMouseOver = true;
+            if (!this.IsMouseOver)
+                this.IsMouseOver = true;
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            if (IsMouseOver)
-                IsMouseOver = false;
+            if (this.IsMouseOver)
+                this.IsMouseOver = false;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (IsMouseOver && Enabled)
+            if (this.IsMouseOver && this.Enabled)
             {
-                using (Pen pen = new Pen(ForeColor))
+                using (Pen pen = new Pen(this.ForeColor))
                 {
-                    e.Graphics.DrawRectangle(pen, Rectangle.Inflate(ClientRectangle, -1, -1));
+                    e.Graphics.DrawRectangle(pen, Rectangle.Inflate(this.ClientRectangle, -1, -1));
                 }
             }
 
@@ -76,19 +76,19 @@ namespace WeifenLuo.WinFormsUI.Docking
                 ColorMap[] colorMap = new ColorMap[2];
                 colorMap[0] = new ColorMap();
                 colorMap[0].OldColor = Color.FromArgb(0, 0, 0);
-                colorMap[0].NewColor = ForeColor;
+                colorMap[0].NewColor = this.ForeColor;
                 colorMap[1] = new ColorMap();
-                colorMap[1].OldColor = Image.GetPixel(0, 0);
+                colorMap[1].OldColor = this.Image.GetPixel(0, 0);
                 colorMap[1].NewColor = Color.Transparent;
 
                 imageAttributes.SetRemapTable(colorMap);
 
                 e.Graphics.DrawImage(
-                   Image,
-                   new Rectangle(0, 0, Image.Width, Image.Height),
+                   this.Image,
+                   new Rectangle(0, 0, this.Image.Width, this.Image.Height),
                    0, 0,
-                   Image.Width,
-                   Image.Height,
+                   this.Image.Width,
+                   this.Image.Height,
                    GraphicsUnit.Pixel,
                    imageAttributes);
             }
@@ -98,14 +98,14 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public void RefreshChanges()
         {
-            if (IsDisposed)
+            if (this.IsDisposed)
                 return;
 
-            bool mouseOver = ClientRectangle.Contains(PointToClient(Control.MousePosition));
-            if (mouseOver != IsMouseOver)
-                IsMouseOver = mouseOver;
+            bool mouseOver = this.ClientRectangle.Contains(this.PointToClient(Control.MousePosition));
+            if (mouseOver != this.IsMouseOver)
+                this.IsMouseOver = mouseOver;
 
-            OnRefreshChanges();
+            this.OnRefreshChanges();
         }
 
         protected virtual void OnRefreshChanges()

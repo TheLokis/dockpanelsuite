@@ -12,33 +12,33 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         internal int Add(DockPane pane)
         {
-            if (Items.Contains(pane))
-                return Items.IndexOf(pane);
+            if (this.Items.Contains(pane))
+                return this.Items.IndexOf(pane);
 
-            Items.Add(pane);
-            return Count - 1;
+            this.Items.Add(pane);
+            return this.Count - 1;
         }
 
         internal void AddAt(DockPane pane, int index)
         {
-            if (index < 0 || index > Items.Count - 1)
+            if (index < 0 || index > this.Items.Count - 1)
                 return;
             
-            if (Contains(pane))
+            if (this.Contains(pane))
                 return;
 
-            Items.Insert(index, pane);
+            this.Items.Insert(index, pane);
         }
 
         internal void Dispose()
         {
-            for (int i=Count - 1; i>=0; i--)
+            for (int i= this.Count - 1; i>=0; i--)
                 this[i].Close();
         }
 
         internal void Remove(DockPane pane)
         {
-            Items.Remove(pane);
+            this.Items.Remove(pane);
         }
     }
 }

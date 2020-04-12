@@ -13,7 +13,7 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             public VS2012LightAutoHideWindowSplitterControl(DockPanel.AutoHideWindowControl autoHideWindow)
             {
-                AutoHideWindow = autoHideWindow;
+                this.AutoHideWindow = autoHideWindow;
             }
 
             private DockPanel.AutoHideWindowControl AutoHideWindow { get; set; }
@@ -25,19 +25,19 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             protected override void StartDrag()
             {
-                AutoHideWindow.DockPanel.BeginDrag(AutoHideWindow, AutoHideWindow.RectangleToScreen(Bounds));
+                this.AutoHideWindow.DockPanel.BeginDrag(this.AutoHideWindow, this.AutoHideWindow.RectangleToScreen(this.Bounds));
             }
 
             protected override void OnPaint(PaintEventArgs e)
             {
                 base.OnPaint(e);
 
-                Rectangle rect = ClientRectangle;
+                Rectangle rect = this.ClientRectangle;
 
                 if (rect.Width <= 0 || rect.Height <= 0)
                     return;
 
-                switch (AutoHideWindow.DockState)
+                switch (this.AutoHideWindow.DockState)
                 {
                     case DockState.DockRightAutoHide:
                     case DockState.DockLeftAutoHide:
@@ -69,30 +69,30 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         public VS2012LightAutoHideWindowControl(DockPanel dockPanel) : base(dockPanel)
         {
-            m_splitter = new VS2012LightAutoHideWindowSplitterControl(this);
-            Controls.Add(m_splitter);
+            this.m_splitter = new VS2012LightAutoHideWindowSplitterControl(this);
+            this.Controls.Add(this.m_splitter);
         }
 
         protected override Rectangle DisplayingRectangle
         {
             get
             {
-                Rectangle rect = ClientRectangle;
+                Rectangle rect = this.ClientRectangle;
 
                 // exclude the border and the splitter
-                if (DockState == DockState.DockBottomAutoHide)
+                if (this.DockState == DockState.DockBottomAutoHide)
                 {
                     rect.Y += Measures.SplitterSize;
                     rect.Height -= Measures.SplitterSize;
                 }
-                else if (DockState == DockState.DockRightAutoHide)
+                else if (this.DockState == DockState.DockRightAutoHide)
                 {
                     rect.X += Measures.SplitterSize;
                     rect.Width -= Measures.SplitterSize;
                 }
-                else if (DockState == DockState.DockTopAutoHide)
+                else if (this.DockState == DockState.DockTopAutoHide)
                     rect.Height -= Measures.SplitterSize;
-                else if (DockState == DockState.DockLeftAutoHide)
+                else if (this.DockState == DockState.DockLeftAutoHide)
                     rect.Width -= Measures.SplitterSize;
 
                 return rect;
@@ -101,38 +101,38 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         protected override void OnLayout(LayoutEventArgs levent)
         {
-            DockPadding.All = 0;
-            if (DockState == DockState.DockLeftAutoHide)
+            this.DockPadding.All = 0;
+            if (this.DockState == DockState.DockLeftAutoHide)
             {
                 //DockPadding.Right = 2;
-                m_splitter.Dock = DockStyle.Right;
+                this.m_splitter.Dock = DockStyle.Right;
             }
-            else if (DockState == DockState.DockRightAutoHide)
+            else if (this.DockState == DockState.DockRightAutoHide)
             {
                 //DockPadding.Left = 2;
-                m_splitter.Dock = DockStyle.Left;
+                this.m_splitter.Dock = DockStyle.Left;
             }
-            else if (DockState == DockState.DockTopAutoHide)
+            else if (this.DockState == DockState.DockTopAutoHide)
             {
                 //DockPadding.Bottom = 2;
-                m_splitter.Dock = DockStyle.Bottom;
+                this.m_splitter.Dock = DockStyle.Bottom;
             }
-            else if (DockState == DockState.DockBottomAutoHide)
+            else if (this.DockState == DockState.DockBottomAutoHide)
             {
                 //DockPadding.Top = 2;
-                m_splitter.Dock = DockStyle.Top;
+                this.m_splitter.Dock = DockStyle.Top;
             }
 
-            Rectangle rectDisplaying = DisplayingRectangle;
+            Rectangle rectDisplaying = this.DisplayingRectangle;
             Rectangle rectHidden = new Rectangle(-rectDisplaying.Width, rectDisplaying.Y, rectDisplaying.Width, rectDisplaying.Height);
-            foreach (Control c in Controls)
+            foreach (Control c in this.Controls)
             {
                 DockPane pane = c as DockPane;
                 if (pane == null)
                     continue;
 
 
-                if (pane == ActivePane)
+                if (pane == this.ActivePane)
                     pane.Bounds = rectDisplaying;
                 else
                     pane.Bounds = rectHidden;

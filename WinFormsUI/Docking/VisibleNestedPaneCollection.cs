@@ -13,49 +13,49 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal VisibleNestedPaneCollection(NestedPaneCollection nestedPanes)
             : base(new List<DockPane>())
         {
-            m_nestedPanes = nestedPanes;
+            this.m_nestedPanes = nestedPanes;
         }
 
         public NestedPaneCollection NestedPanes
         {
-            get	{	return m_nestedPanes;	}
+            get	{	return this.m_nestedPanes;	}
         }
 
         public INestedPanesContainer Container
         {
-            get	{	return NestedPanes.Container;	}
+            get	{	return this.NestedPanes.Container;	}
         }
 
         public DockState DockState
         {
-            get	{	return NestedPanes.DockState;	}
+            get	{	return this.NestedPanes.DockState;	}
         }
 
         public bool IsFloat
         {
-            get	{	return NestedPanes.IsFloat;	}
+            get	{	return this.NestedPanes.IsFloat;	}
         }
 
         internal void Refresh()
         {
-            Items.Clear();
-            for (int i=0; i<NestedPanes.Count; i++)
+            this.Items.Clear();
+            for (int i=0; i< this.NestedPanes.Count; i++)
             {
-                DockPane pane = NestedPanes[i];
+                DockPane pane = this.NestedPanes[i];
                 NestedDockingStatus status = pane.NestedDockingStatus;
                 status.SetDisplayingStatus(true, status.PreviousPane, status.Alignment, status.Proportion);
-                Items.Add(pane);
+                this.Items.Add(pane);
             }
 
-            foreach (DockPane pane in NestedPanes)
-                if (pane.DockState != DockState || pane.IsHidden)
+            foreach (DockPane pane in this.NestedPanes)
+                if (pane.DockState != this.DockState || pane.IsHidden)
                 {
                     pane.Bounds = Rectangle.Empty;
                     pane.SplitterBounds = Rectangle.Empty;
-                    Remove(pane);
+                    this.Remove(pane);
                 }
 
-            CalculateBounds();
+            this.CalculateBounds();
 
             foreach (DockPane pane in this)
             {
@@ -68,12 +68,12 @@ namespace WeifenLuo.WinFormsUI.Docking
 
         private void Remove(DockPane pane)
         {
-            if (!Contains(pane))
+            if (!this.Contains(pane))
                 return;
 
             NestedDockingStatus statusPane = pane.NestedDockingStatus;
             DockPane lastNestedPane = null;
-            for (int i=Count - 1; i> IndexOf(pane); i--)
+            for (int i= this.Count - 1; i> this.IndexOf(pane); i--)
             {
                 if (this[i].NestedDockingStatus.PreviousPane == pane)
                 {
@@ -84,12 +84,12 @@ namespace WeifenLuo.WinFormsUI.Docking
 
             if (lastNestedPane != null)
             {
-                int indexLastNestedPane = IndexOf(lastNestedPane);
-                Items.Remove(lastNestedPane);
-                Items[IndexOf(pane)] = lastNestedPane;
+                int indexLastNestedPane = this.IndexOf(lastNestedPane);
+                this.Items.Remove(lastNestedPane);
+                this.Items[this.IndexOf(pane)] = lastNestedPane;
                 NestedDockingStatus lastNestedDock = lastNestedPane.NestedDockingStatus;
                 lastNestedDock.SetDisplayingStatus(true, statusPane.DisplayingPreviousPane, statusPane.DisplayingAlignment, statusPane.DisplayingProportion);
-                for (int i=indexLastNestedPane - 1; i>IndexOf(lastNestedPane); i--)
+                for (int i=indexLastNestedPane - 1; i> this.IndexOf(lastNestedPane); i--)
                 {
                     NestedDockingStatus status = this[i].NestedDockingStatus;
                     if (status.PreviousPane == pane)
@@ -97,19 +97,19 @@ namespace WeifenLuo.WinFormsUI.Docking
                 }
             }
             else
-                Items.Remove(pane);
+                this.Items.Remove(pane);
 
             statusPane.SetDisplayingStatus(false, null, DockAlignment.Left, 0.5);
         }
 
         private void CalculateBounds()
         {
-            if (Count == 0)
+            if (this.Count == 0)
                 return;
 
-            this[0].NestedDockingStatus.SetDisplayingBounds(Container.DisplayingRectangle, Container.DisplayingRectangle, Rectangle.Empty);
+            this[0].NestedDockingStatus.SetDisplayingBounds(this.Container.DisplayingRectangle, this.Container.DisplayingRectangle, Rectangle.Empty);
 
-            for (int i=1; i<Count; i++)
+            for (int i=1; i< this.Count; i++)
             {
                 DockPane pane = this[i];
                 NestedDockingStatus status = pane.NestedDockingStatus;

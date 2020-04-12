@@ -82,16 +82,16 @@ namespace WeifenLuo.WinFormsUI.Docking
 
 			public override string ToString() {
 				string winText = "null";
-				if(FloatWindow != null) {
-								winText = FloatWindow.Text;
-				} else if ( DockPanel != null) {
+				if(this.FloatWindow != null) {
+								winText = this.FloatWindow.Text;
+				} else if (this.DockPanel != null) {
 					winText = "DockPanel";
 				}
 				string paneText = "null";
-				if(Pane != null) {
-								paneText = Pane.CaptionText;
+				if(this.Pane != null) {
+								paneText = this.Pane.CaptionText;
 				}
-				return "Cursor=[x=" + Cursor.X + "," + Cursor.Y + "],Window=" + winText + ",Pane=" + paneText;
+				return "Cursor=[x=" + this.Cursor.X + "," + this.Cursor.Y + "],Window=" + winText + ",Pane=" + paneText;
 			}
 		}
 

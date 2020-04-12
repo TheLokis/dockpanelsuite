@@ -29,9 +29,9 @@ namespace WeifenLuo.WinFormsUI.Docking
             get {
                 //m_autoHideStripSkin.TabGradient.StartColor = Color.Black;
                 //m_autoHideStripSkin.TabGradient.EndColor = Color.Black;
-                return m_autoHideStripSkin ;
+                return this.m_autoHideStripSkin ;
             }
-            set { m_autoHideStripSkin = value; }
+            set { this.m_autoHideStripSkin = value; }
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockPaneStripSkin DockPaneStripSkin
         {
-            get { return m_dockPaneStripSkin; }
-            set { m_dockPaneStripSkin = value; }
+            get { return this.m_dockPaneStripSkin; }
+            set { this.m_dockPaneStripSkin = value; }
         }
     }
 
@@ -61,8 +61,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockPanelGradient DockStripGradient
         {
-            get { return m_dockStripGradient; }
-            set { m_dockStripGradient = value; }
+            get { return this.m_dockStripGradient; }
+            set { this.m_dockStripGradient = value; }
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public TabGradient TabGradient
         {
-            get { return m_TabGradient; }
-            set { m_TabGradient = value; }
+            get { return this.m_TabGradient; }
+            set { this.m_TabGradient = value; }
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockStripBackground DockStripBackground
         {
-            get { return m_DockStripBackground; }
-            set { m_DockStripBackground = value; }
+            get { return this.m_DockStripBackground; }
+            set { this.m_DockStripBackground = value; }
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemFonts), "MenuFont")]
         public Font TextFont
         {
-            get { return m_textFont; }
-            set { m_textFont = value; }
+            get { return this.m_textFont; }
+            set { this.m_textFont = value; }
         }
 
     }
@@ -110,8 +110,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockPaneStripGradient DocumentGradient
         {
-            get { return m_DocumentGradient; }
-            set { m_DocumentGradient = value; }
+            get { return this.m_DocumentGradient; }
+            set { this.m_DocumentGradient = value; }
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockPaneStripToolWindowGradient ToolWindowGradient
         {
-            get { return m_ToolWindowGradient; }
-            set { m_ToolWindowGradient = value; }
+            get { return this.m_ToolWindowGradient; }
+            set { this.m_ToolWindowGradient = value; }
         }
 
         /// <summary>
@@ -129,8 +129,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemFonts), "MenuFont")]
         public Font TextFont
         {
-            get { return m_textFont; }
-            set { m_textFont = value; }
+            get { return this.m_textFont; }
+            set { this.m_textFont = value; }
         }
     }
 
@@ -148,8 +148,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public TabGradient ActiveCaptionGradient
         {
-            get { return m_activeCaptionGradient; }
-            set { m_activeCaptionGradient = value; }
+            get { return this.m_activeCaptionGradient; }
+            set { this.m_activeCaptionGradient = value; }
         }
 
         /// <summary>
@@ -157,8 +157,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public TabGradient InactiveCaptionGradient
         {
-            get { return m_inactiveCaptionGradient; }
-            set { m_inactiveCaptionGradient = value; }
+            get { return this.m_inactiveCaptionGradient; }
+            set { this.m_inactiveCaptionGradient = value; }
         }
     }
 
@@ -179,8 +179,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public DockPanelGradient DockStripGradient
         {
-            get { return m_dockStripGradient; }
-            set { m_dockStripGradient = value; }
+            get { return this.m_dockStripGradient; }
+            set { this.m_dockStripGradient = value; }
         }
 
         /// <summary>
@@ -188,14 +188,14 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public TabGradient ActiveTabGradient
         {
-            get { return m_activeTabGradient; }
-            set { m_activeTabGradient = value; }
+            get { return this.m_activeTabGradient; }
+            set { this.m_activeTabGradient = value; }
         }
 
         public TabGradient HoverTabGradient
         {
-            get { return m_hoverTabGradient; }
-            set { m_hoverTabGradient = value; }
+            get { return this.m_hoverTabGradient; }
+            set { this.m_hoverTabGradient = value; }
         }
 
         /// <summary>
@@ -203,8 +203,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         /// </summary>
         public TabGradient InactiveTabGradient
         {
-            get { return m_inactiveTabGradient; }
-            set { m_inactiveTabGradient = value; }
+            get { return this.m_inactiveTabGradient; }
+            set { this.m_inactiveTabGradient = value; }
         }
     }
 
@@ -222,8 +222,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemColors), "ControlText")]
         public Color TextColor
         {
-            get { return m_textColor; }
-            set { m_textColor = value; }
+            get { return this.m_textColor; }
+            set { this.m_textColor = value; }
         }
     }
 
@@ -243,8 +243,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemColors), "Control")]
         public Color StartColor
         {
-            get { return m_startColor; }
-            set { m_startColor = value; }
+            get { return this.m_startColor; }
+            set { this.m_startColor = value; }
         }
 
         /// <summary>
@@ -253,8 +253,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemColors), "Control")]
         public Color EndColor
         {
-            get { return m_endColor; }
-            set { m_endColor = value; }
+            get { return this.m_endColor; }
+            set { this.m_endColor = value; }
         }
     }
     
@@ -275,8 +275,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemColors), "Control")]
         public Color StartColor
         {
-            get { return m_startColor; }
-            set { m_startColor = value; }
+            get { return this.m_startColor; }
+            set { this.m_startColor = value; }
         }
 
         /// <summary>
@@ -285,8 +285,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(typeof(SystemColors), "Control")]
         public Color EndColor
         {
-            get { return m_endColor; }
-            set { m_endColor = value; }
+            get { return this.m_endColor; }
+            set { this.m_endColor = value; }
         }
 
         /// <summary>
@@ -295,8 +295,8 @@ namespace WeifenLuo.WinFormsUI.Docking
         [DefaultValue(LinearGradientMode.Horizontal)]
         public LinearGradientMode LinearGradientMode
         {
-            get { return m_linearGradientMode; }
-            set { m_linearGradientMode = value; }
+            get { return this.m_linearGradientMode; }
+            set { this.m_linearGradientMode = value; }
         }
     }
 
