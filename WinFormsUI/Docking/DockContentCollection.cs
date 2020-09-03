@@ -40,7 +40,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal int Add(IDockContent content)
         {
 #if DEBUG
-            if (DockPane != null)
+            if (this.DockPane != null)
                 throw new InvalidOperationException();
 #endif
 
@@ -54,7 +54,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         internal void AddAt(IDockContent content, int index)
         {
 #if DEBUG
-            if (DockPane != null)
+            if (this.DockPane != null)
                 throw new InvalidOperationException();
 #endif
 
@@ -115,7 +115,7 @@ namespace WeifenLuo.WinFormsUI.Docking
             get
             {
 #if DEBUG
-                if (DockPane == null)
+                if (this.DockPane == null)
                     throw new InvalidOperationException();
 #endif
 
@@ -132,7 +132,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private IDockContent GetVisibleContent(int index)
         {
 #if DEBUG
-            if (DockPane == null)
+            if (this.DockPane == null)
                 throw new InvalidOperationException();
 #endif
 
@@ -151,7 +151,7 @@ namespace WeifenLuo.WinFormsUI.Docking
         private int GetIndexOfVisibleContents(IDockContent content)
         {
 #if DEBUG
-            if (DockPane == null)
+            if (this.DockPane == null)
                 throw new InvalidOperationException();
 #endif
 
